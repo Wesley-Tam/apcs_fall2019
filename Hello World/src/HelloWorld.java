@@ -1,6 +1,6 @@
 //Wesley Tam
 //August 19, 2019
-//3rd period
+//APCS 3eriod 3
 
 //This class displays the text "Hello, World!" to the console window
 
