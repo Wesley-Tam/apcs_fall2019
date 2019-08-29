@@ -1,4 +1,5 @@
 //Wesley Tam
+//APCS Period 3
 //August 27, 2019
 //This class draws Pikachu and uses static methods to simplify the program
 
