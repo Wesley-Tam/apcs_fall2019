@@ -9,5 +9,8 @@ public class DoMath {
 		System.out.println(Calculate.average (2, 10, 10));
 		System.out.println(Calculate.toDegrees(2));
 		System.out.println(Calculate.discriminant(2, 2, 2));
+		System.out.println(Calculate.toImproperFrac(3, 1, 2));
+		System.out.println(Calculate.toMixedNum(7, 2));
+		System.out.println(Calculate.foil(2, 3, 6, -7, "x"));
 	}
 }
