@@ -21,6 +21,30 @@ public class Calculate {
 		
 	public static double average(double number, double secnum) {
 		//A call to average returns the average of the values passed to it. The method accepts two doubles and returns two doubles.
-		return (number * secnum)/2;
+		return (number + secnum)/2.0;
+	}
+	
+	public static double average(double number, double secnum, double thirdnum) {
+		//Another average method. This one accepts three doubles and returns a double. The name is the same, the difference is in the header and the calculation. (The ability to define two or more different methods with the same name but different method signatures is called "overloading". This average method is an example of an "overloaded method".)
+		return (number + secnum + thirdnum)/3;
+	}
+		
+	public static double toDegrees(double radians) {
+		//A call to toDegrees converts an angle measure given in radians into degrees. This method accepts a double and returns a double. The method should use 3.14159 as an approx. for pi.
+		return (radians * 180 / 3.14159);
+	}
+	
+	public static double toRadians(double degrees) {
+		//A call to toRadians converts an angle measure given in degrees into radians. The method accepts a double and returns a double. This method should use 3.14159 as an approx. for pi.
+		return (degrees * 3.14159 / 180);
+	}
+	
+	public static double discriminant(double a, double b, double c) {
+		//A call to discriminant provides the coefficients of a quadratic formula in standard form (a, b, and c) and returns the value of the discriminant. The method accepts three doubles and returns a double.
+		return ((b * b) - (4 * a * c));
+	}
+		
+	public static String  toImproperFrac(int wholenum, int numerator, int denominator) {
+		//A call to toImproperFrac converts a mixed number (with pieces provided separately in the order of a whole number, numerator, then denominator) into an improper fraction. The method accepts three integers and returns a String (For example, to convert 3 and 1/2 into an improper fraction: toImproperFrac (3, 1, 2). This call would return the String: "7/2").
 	}
 }
