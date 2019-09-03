@@ -44,7 +44,18 @@ public class Calculate {
 		return ((b * b) - (4 * a * c));
 	}
 		
-	public static String  toImproperFrac(int wholenum, int numerator, int denominator) {
+	public static String toImproperFrac(int wholenum, int numerator, int denominator) {
 		//A call to toImproperFrac converts a mixed number (with pieces provided separately in the order of a whole number, numerator, then denominator) into an improper fraction. The method accepts three integers and returns a String (For example, to convert 3 and 1/2 into an improper fraction: toImproperFrac (3, 1, 2). This call would return the String: "7/2").
+		return (wholenum * denominator + numerator + "/" + denominator); 
+	}
+	
+	public static String toMixedNum(int numerator, int denominator) {
+		//A call to toMixedNum converts an improper fraction (with pieces provided separately in the order numerator then denominator) into a mixed number. The method accepts two integers and returns a String (For example, to convert 7/2 into a mixed number: toMixedNum (7, 2). This call would return the String: "3_1/2").
+		return (numerator/denominator + "_" + numerator%denominator + "/" + denominator); 
+	}
+	
+	public static String foil(int a,int b, int c, int d, String x) {
+		//A call to foil converts a binomial multiplication of the form (ax + b)(cx + d) into a quadratic equation of the form ax^2 + bx + c. The method accepts four integers and a String and then returns a String.
+		return (a*c + "x^2 + " + (a*d + b*c) + "n + " + b*d);
 	}
 }
