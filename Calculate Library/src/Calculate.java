@@ -58,4 +58,8 @@ public class Calculate {
 		//A call to foil converts a binomial multiplication of the form (ax + b)(cx + d) into a quadratic equation of the form ax^2 + bx + c. The method accepts four integers and a String and then returns a String.
 		return (a*c + "x^2 + " + (a*d + b*c) + "x + " + b*d);
 	}
+	
+	public static boolean isDivisibleBy(int num1, int num2) {
+		//A call to isDivisibleBy determines whether or not one integer is evenly divisible by another. The method accepts two integers and returns a boolean.
+	}
 }
