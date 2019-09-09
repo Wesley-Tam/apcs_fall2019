@@ -14,7 +14,7 @@ public class Pikachu {
 		drawBox();
 		System.out.println();
 	}
-	public static void pikachuPrint() {
+	public static void pikachuPrint() { //Draw Pikachu
 		System.out.println("Hello");
 		System.out.println("Pikachu Goes Here");
 		System.out.println("Pikachu welcomes you to the world of Pokemon");
