@@ -56,6 +56,6 @@ public class Calculate {
 	
 	public static String foil(int a,int b, int c, int d, String x) {
 		//A call to foil converts a binomial multiplication of the form (ax + b)(cx + d) into a quadratic equation of the form ax^2 + bx + c. The method accepts four integers and a String and then returns a String.
-		return (a*c + "x^2 + " + (a*d + b*c) + "n + " + b*d);
+		return (a*c + "x^2 + " + (a*d + b*c) + "x + " + b*d);
 	}
 }
