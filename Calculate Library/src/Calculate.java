@@ -59,7 +59,77 @@ public class Calculate {
 		return (a*c + "x^2 + " + (a*d + b*c) + "x + " + b*d);
 	}
 	
-	public static boolean isDivisibleBy(int num1, int num2) {
+	public static boolean isDivisibleBy(int numerator, int denominator) {
 		//A call to isDivisibleBy determines whether or not one integer is evenly divisible by another. The method accepts two integers and returns a boolean.
+		if (numerator % denominator == 0) {
+			return true;
+		} else {
+				return false;
+			}
+	}
+	
+	public static double absValue(double num) {
+		//A call to absValue returns the absolute value of the number passed. The method accepts a double and returns a double.
+		if (num >= 0) {
+			return num;
+		} else {
+			return (num * -1);
+		}
+	}
+	
+	public static double max(double num1, double num2) {
+		//A call to max returns the larger of the values passed. The method accepts two doubles and returns a double.
+		if (num1 > num2) {
+			return num1;
+		} else {
+			return num2;
+		}
+	}
+	
+	public static double max(double num1, double num2, double num3) {
+		//Overload the max method. This one accepts three doubles and returns a double.
+		if (num1 > num2 && num1 > num3) {
+			return num1;
+		} else if (num2 > num3 && num2 > num1) {
+			return num2;
+		} else {
+			return num3;
+		}
+	}
+			
+	
+	public static int min(int num1, int num2) {
+		//A call to min returns the smaller of the values passed. The method accepts two doubles and returns a int.
+		if (num1 < num2) {
+			return num1;
+		} else {
+			return num2;
+		}
+	}
+	
+	public static double round2(double num) {
+		//A call to round2 rounds a double a double correctly to 2 decimal places and returns a double.
+		num =  (num * 100);
+		num = (num + 0.5);
+		num = (int)num;	
+		num = num/100;
+		num = (double)num;
+		return num;
+	}
+	
+	public static double exponent(double num, int exp) {
+		//A call to exponent raises a value to a positive integer power. The method accepts a double and an integer and returns a double. For the time being, you can assume that the exponent is positive.
+		int i = 1;
+		double answer = num;
+		while (i != exp) {
+			answer *= num;
+			i++;
+		}
+		return answer;
+	}
+	
+	public static int factorial(int base) {
+		//A call to factorial returns the factorial of the value passed. The method accepts an integer and returns an integer. For the time being, you can assume that the exponent is positive.
+		for ()
 	}
 }
