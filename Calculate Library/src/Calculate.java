@@ -7,16 +7,12 @@ public class Calculate {
 	
 	public static int square(int number) {
 		//A call to square returns the square of the value passed. The method accepts and integer and returns an integer.
-		int answer;
-		answer = number * number;
-		return answer;
+		return number * number;
 	}
 	
 	public static int cube(int number) {
 		//A call to cube returns the cube of the value passed. The method accepts and integer and returns an integer.
-		int answer;
-		answer = number * number * number;
-		return answer;
+		return number * number * number;
 	}
 		
 	public static double average(double number, double secnum) {
