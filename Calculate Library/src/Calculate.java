@@ -124,8 +124,26 @@ public class Calculate {
 		return answer;
 	}
 	
-	public static int factorial(int base) {
+	public static int factorial(int num) {
 		//A call to factorial returns the factorial of the value passed. The method accepts an integer and returns an integer. For the time being, you can assume that the exponent is positive.
-		for ()
+		int answer = num;
+		for (int i = num - 1; i > 0; i--) {
+			 answer = answer * i;
+		}
+		return answer;
+	}
+	
+	public static boolean isPrime(int num) {
+		//A call to isPrime determines whether or not an integer is prime. The method accepts an integer and returns a boolean. To receive full credit, the method should call another method in your library.
+		boolean answer = false;
+		for (int i = 2; i <= num; i++) {
+			isDivisibleBy(num, i;)
+			if (i == num || num == 2) {
+			answer = true;
+			} else {
+				answer = false;
+			}
+		}
+		return answer;
 	}
 }
