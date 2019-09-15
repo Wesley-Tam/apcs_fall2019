@@ -135,9 +135,9 @@ public class Calculate {
 	
 	public static boolean isPrime(int num) {
 		//A call to isPrime determines whether or not an integer is prime. The method accepts an integer and returns a boolean. To receive full credit, the method should call another method in your library.
-		boolean answer = false;
-		for (int i = 2; i <= num; i++) {
-			isDivisibleBy(num, i;)
+		boolean answer = true;
+		for (int i = 2; i < num; i++) {
+			isDivisibleBy(num, i);
 			if (i == num || num == 2) {
 			answer = true;
 			} else {
