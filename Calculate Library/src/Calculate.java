@@ -143,7 +143,7 @@ public class Calculate {
 			} else {
 				answer = false;
 			}
-		}
+		} 
 		return answer;
 	}
 }
