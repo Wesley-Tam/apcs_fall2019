@@ -60,8 +60,8 @@ public class Calculate {
 		if (numerator % denominator == 0) {
 			return true;
 		} else {
-				return false;
-			}
+			return false;
+		}
 	}
 	
 	public static double absValue(double num) {
@@ -135,15 +135,35 @@ public class Calculate {
 	
 	public static boolean isPrime(int num) {
 		//A call to isPrime determines whether or not an integer is prime. The method accepts an integer and returns a boolean. To receive full credit, the method should call another method in your library.
-		boolean answer = false;
+		boolean answer = true;
 		for (int i = 2; i < num; i++) {
-			boolean x = isDivisibleBy(num, i);
-			if (x = true) {
-			answer = true;
-			} else {
+			boolean result = isDivisibleBy(num, i);
+			if (result == true) {
 				answer = false;
+				return answer;
 			}
-		} 
+		}
 		return answer;
+	}
+
+	public static int gcf(int x, int y) {
+		//A call to gcf finds the greatest common factor of two integers. The method accepts two positive integers and returns an integer. To recieve full credit, the method should call another method you've already written for this library.
+		int max = (int)max(x, y);
+		int min = min(x, y);
+		int gcf = 0;
+		if (max % min == 0) {
+			return min;
+		} else {
+			if (max % min != 0) {
+				for (int i = min; max % i != 0; i--) {
+					return gcf = max / i;
+					if (max % i == 0) {
+						for (int j = i; min % j != 0; j--) {
+							return gcf = min / i;
+						}
+					}
+				}
+			}
+		}
 	}
 }
