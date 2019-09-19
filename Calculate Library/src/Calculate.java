@@ -140,7 +140,6 @@ public class Calculate {
 			boolean result = isDivisibleBy(num, i);
 			if (result == true) {
 				answer = false;
-				return answer;
 			}
 		}
 		return answer;
@@ -153,17 +152,12 @@ public class Calculate {
 		int gcf = 0;
 		if (max % min == 0) {
 			return min;
-		} else {
-			if (max % min != 0) {
+		} else if(max%min!=0){
 				for (int i = min; max % i != 0; i--) {
-					return gcf = max / i;
-					if (max % i == 0) {
-						for (int j = i; min % j != 0; j--) {
-							return gcf = min / i;
-						}
-					}
+					gcf=i + 1;
 				}
 			}
 		}
+		return gcf;
 	}
 }

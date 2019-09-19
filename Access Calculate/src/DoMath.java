@@ -22,6 +22,6 @@ public class DoMath {
 		System.out.println(Calculate.exponent(2, 4));
 		System.out.println(Calculate.factorial(7));
 		System.out.println(Calculate.isPrime(18));
-		System.out.println(Calculate.gcf(40, 15));
+		System.out.println(Calculate.gcf(40, 6));
 	}
 }
