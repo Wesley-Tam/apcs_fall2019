@@ -152,10 +152,12 @@ public class Calculate {
 		int gcf = 0;
 		if (max % min == 0) {
 			return min;
-		} else if(max%min!=0){
-				for (int i = min; max % i != 0; i--) {
-					gcf=i + 1;
-				}
+		} else if (max % min != 0) {
+			for (int i = min; max % i != 0; i--) {
+				gcf = i;
+			}
+			for (int j = gcf; min % j != 0; j--) {
+				gcf = j;
 			}
 		}
 		return gcf;
