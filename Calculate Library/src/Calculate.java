@@ -95,7 +95,7 @@ public class Calculate {
 			
 	
 	public static int min(int num1, int num2) {
-		//A call to min returns the smaller of the values passed. The method accepts two doubles and returns a int.
+		//A call to min returns the smaller of the values passed. The method accepts two doubles and returns an int.
 		if (num1 < num2) {
 			return num1;
 		} else {
@@ -127,7 +127,7 @@ public class Calculate {
 	public static int factorial(int num) {
 		//A call to factorial returns the factorial of the value passed. The method accepts an integer and returns an integer. For the time being, you can assume that the exponent is positive.
 		int answer = num;
-		for (int i = num - 1; i > 0; i--) {
+		for (int i = 1; i < num; i++) {
 			 answer = answer * i;
 		}
 		return answer;
@@ -146,7 +146,7 @@ public class Calculate {
 	}
 
 	public static int gcf(int x, int y) {
-		//A call to gcf finds the greatest common factor of two integers. The method accepts two positive integers and returns an integer. To recieve full credit, the method should call another method you've already written for this library.
+		//A call to gcf finds the greatest common factor of two integers. The method accepts two positive integers and returns an integer. To receive full credit, the method should call another method you've already written for this library.
 		int max = (int)max(x, y);
 		int min = min(x, y);
 		int gcf = 0;
@@ -155,9 +155,9 @@ public class Calculate {
 		} else if (max % min != 0) {
 			for (int i = min; max % i != 0; i--) {
 				gcf = i;
-			}
-			for (int j = gcf; min % j != 0; j--) {
+				for (int j = min; min % j != 0; j--) {
 				gcf = j;
+				}
 			}
 		}
 		return gcf;
