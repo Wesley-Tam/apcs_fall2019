@@ -147,6 +147,7 @@ public class Calculate {
 
 	public static int gcf(int x, int y) {
 		//A call to gcf finds the greatest common factor of two integers. The method accepts two positive integers and returns an integer. To receive full credit, the method should call another method you've already written for this library.
+		//Done with the help of Caleb Ng
 		int max = (int)max(x, y);
 		int min = min(x, y);
 		int gcf = 0;
@@ -166,5 +167,6 @@ public class Calculate {
 	
 	public static double  sqrt(double num) {
 		//A call to sqrt returns an approximation of the square root of the value passed, rounded to two decimal places. the method accepts a double and returns a double.
+		
 	}
 }
