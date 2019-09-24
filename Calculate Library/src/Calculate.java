@@ -156,8 +156,8 @@ public class Calculate {
 		} else if (max - min == 1) {
 			gcf = 1;
 		} else {
-			for (int i = 2; i < min; i++) {
-				if (max % i == 0 && min % i == 0) {
+			for (int i = min; i > 0; i--) {
+				if ((isDivisibleBy(max, i)) == true && (isDivisibleBy(min, i) == true)) {
 					gcf = i;
 				}
 			}
