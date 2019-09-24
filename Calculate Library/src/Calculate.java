@@ -150,13 +150,14 @@ public class Calculate {
 		int max = (int)max(x, y);
 		int min = min(x, y);
 		int gcf = 0;
-		if (max % min == 0) {
+		if (isDivisibleBy(max, min) == true) {
 			return min;
-		} else if (max % min != 0) {
-			for (int i = min; max % i != 0; i--) {
-				gcf = i;
-				for (int j = min; min % j != 0; j--) {
-				gcf = j;
+		} else if (max - min == 1) {
+			gcf = 1;
+		} else {
+			for (int i = 2; i < min; i++) {
+				if (max % i == 0 && min % i == 0) {
+					gcf = i;
 				}
 			}
 		}
