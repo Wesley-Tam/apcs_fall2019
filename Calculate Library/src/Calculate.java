@@ -165,7 +165,7 @@ public class Calculate {
 		return gcf;
 	}
 	
-	public static double  sqrt(double num) {
+	public static double sqrt(double num) {
 		//A call to sqrt returns an approximation of the square root of the value passed, rounded to two decimal places. the method accepts a double and returns a double.
 		
 	}
