@@ -57,6 +57,9 @@ public class Calculate {
 	
 	public static boolean isDivisibleBy(int numerator, int denominator) {
 		//A call to isDivisibleBy determines whether or not one integer is evenly divisible by another. The method accepts two integers and returns a boolean.
+		if (denominator == 0) {
+			throw new IllegalArgumentException("Cannot divide by zero");
+		}
 		if (numerator % denominator == 0) {
 			return true;
 		} else {
@@ -117,6 +120,9 @@ public class Calculate {
 		//A call to exponent raises a value to a positive integer power. The method accepts a double and an integer and returns a double. For the time being, you can assume that the exponent is positive.
 		int i = 1;
 		double answer = num;
+		if (exp < 0) {
+			throw new IllegalArgumentException("This code cannot use negative exponents");
+		}
 		while (i != exp) {
 			answer *= num;
 			i++;
@@ -127,6 +133,9 @@ public class Calculate {
 	public static int factorial(int num) {
 		//A call to factorial returns the factorial of the value passed. The method accepts an integer and returns an integer. For the time being, you can assume that the exponent is positive.
 		int answer = num;
+		if (num < 0) {
+			throw new IllegalArgumentException("Don't input a negative number");
+		}
 		for (int i = 1; i < num; i++) {
 			 answer = answer * i;
 		}
@@ -147,17 +156,19 @@ public class Calculate {
 
 	public static int gcf(int x, int y) {
 		//A call to gcf finds the greatest common factor of two integers. The method accepts two positive integers and returns an integer. To receive full credit, the method should call another method you've already written for this library.
-		//Done with the help of Caleb Ng
+		//Done with the help of Caleb Ng and Sabien
 		int max = (int)max(x, y);
 		int min = min(x, y);
-		int gcf = 0;
+		int gcf = 1;
 		if (isDivisibleBy(max, min) == true) {
 			return min;
 		} else if (max - min == 1) {
 			gcf = 1;
+		} else if (isPrime(max) == true || isPrime(min) == true) {
+			gcf = 1;
 		} else {
-			for (int i = min; i > 0; i--) {
-				if ((isDivisibleBy(max, i)) == true && (isDivisibleBy(min, i) == true)) {
+			for (int i = min; i > 1; i--) {
+				if (isDivisibleBy(max, i) == true && isDivisibleBy(min, i) == true) {
 					gcf = i;
 				}
 			}
@@ -167,6 +178,34 @@ public class Calculate {
 	
 	public static double sqrt(double num) {
 		//A call to sqrt returns an approximation of the square root of the value passed, rounded to two decimal places. the method accepts a double and returns a double.
-		
+		//Done with the help of Caleb Ng
+		if (num < 0) {
+			throw new IllegalArgumentException("Cannot take the square root of a negative number");
+		}
+		double guess = 1;
+		if (num == 0) {
+			guess = 0;
+		}
+		while (absValue((guess * guess) - num) >= (0.005)) {
+			guess = 0.5 * (num / guess + guess);
+		}
+		guess = round2(guess);
+		return guess;
+	}
+	
+	public static String quadform(int a, int b, int c) {
+		//A call to quadform uses the coefficients of a quadratic equation in standard form and uses the quadratic formula to approximate the real roots, if any.
+		if (discriminant(a, b, c) < 0) {
+			return "No real roots";
+		}
+		double root1 = (-b + (sqrt(discriminant(a, b, c)))) / (2 * a);
+		double root2 = (-b - (sqrt(discriminant(a, b, c)))) / (2 * a);
+		if (root1 == root2) {
+			return "The repeated root is" + round2(root1);
+		} else {
+			double rootmin = min((int)root1, (int)root2);
+			double rootmax = max(root1, root2);
+			return "The roots are " + round2(rootmin) + "and " + round2(rootmax);
+		}
 	}
 }
