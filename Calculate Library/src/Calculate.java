@@ -201,7 +201,7 @@ public class Calculate {
 		double root1 = (-b + (sqrt(discriminant(a, b, c)))) / (2 * a);
 		double root2 = (-b - (sqrt(discriminant(a, b, c)))) / (2 * a);
 		if (root1 == root2) {
-			return "The repeated root is" + round2(root1);
+			return "The repeated root is " + round2(root1);
 		} else {
 			double rootmin = min((int)root1, (int)root2);
 			double rootmax = max(root1, root2);
