@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class QuadraticClient {
 	public static void main(String[] args) {
 		Scanner userInput = new Scanner(System.in);
-		System.out.println("Welcome to the quadratic describer!\nPlease input values for a, b, and c below!");
+		System.out.println();
+		System.out.println("Welcome to the Quadratic Describer\nProvide values for coefficients a, b, and c");
 		System.out.print("a: ");
 		double a = userInput.nextDouble();
 		System.out.print("b: ");
@@ -18,7 +19,7 @@ public class QuadraticClient {
 		System.out.println();
 		System.out.println(Quadratic.quadrDescriber(a, b, c));
 		System.out.println();
-		System.out.println("Do you want to go again? Type \"quit\" to end, type anything else to continue.");
+		System.out.println("Do you want to keep going? (Type \"quit\" to end");
 		if ((userInput.nextLine()).toLowerCase() == "quit") {
 			
 		}

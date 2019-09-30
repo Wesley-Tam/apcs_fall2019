@@ -6,13 +6,13 @@
 public class Quadratic {
 	public static String quadrDescriber(double a, double b, double c) {
 		//equation
-		String equation = "Equation: " + a + "x^2 + " + b + "x + " + c;
+		String equation = "Description of the graph of:\ny= " + a + "x^2 + " + b + "x + " + c;
 		//direction
 		String direction = "";
 		if (a < 0) {
-			direction = "The parabola opens down.";
+			direction = "Opens: Down.";
 		} else {
-			direction = "The parabola opens up.";
+			direction = "Opens: Up.";
 		}
 		//axis of symmetry
 		double xaxis = round2(-b / (2 * a));
