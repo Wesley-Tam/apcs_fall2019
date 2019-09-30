@@ -10,18 +10,24 @@ public class QuadraticClient {
 		Scanner userInput = new Scanner(System.in);
 		System.out.println();
 		System.out.println("Welcome to the Quadratic Describer\nProvide values for coefficients a, b, and c");
-		System.out.print("a: ");
-		double a = userInput.nextDouble();
-		System.out.print("b: ");
-		double b = userInput.nextDouble();
-		System.out.print("c: ");
-		double c = userInput.nextDouble();
-		System.out.println();
-		System.out.println(Quadratic.quadrDescriber(a, b, c));
-		System.out.println();
-		System.out.println("Do you want to keep going? (Type \"quit\" to end");
-		if ((userInput.nextLine()).toLowerCase() == "quit") {
-			
+		boolean done = false;
+		do {
+			System.out.print("a: ");
+			double a = userInput.nextDouble();
+			System.out.print("b: ");
+			double b = userInput.nextDouble();
+			System.out.print("c: ");
+			double c = userInput.nextDouble();
+			System.out.println();
+			System.out.println(Quadratic.quadrDescriber(a, b, c));
+			System.out.println();
+			System.out.println("Do you want to keep going? (Type \"quit\" to end");
+			if ((userInput.nextLine()).toLowerCase() == "quit") {
+				done = true;
+			} else {
+				done = false;
+			}
+		while (done = false);
 		}
 	}
 }
