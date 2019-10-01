@@ -6,7 +6,7 @@
 public class Quadratic {
 	public static String quadrDescriber(double a, double b, double c) {
 		//equation
-		String equation = "Description of the graph of:\ny= " + a + "x^2 + " + b + "x + " + c;
+		String equation = "Description of the graph of:\ny= " + a + "x^2 + " + b + "x + " + c + "\n";
 		//direction
 		String direction = "";
 		if (a < 0) {
