@@ -38,5 +38,6 @@ public class maxAndEvenSum {
 		System.out.println("The smallest number was " + min);
 		System.out.println("The sum of the even numbers is " + evenSum);
 		System.out.println("The greatest even number was " + evenMax);
+		scanner.close();
 	}
 }
