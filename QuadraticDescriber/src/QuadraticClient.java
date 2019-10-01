@@ -27,5 +27,6 @@ public class QuadraticClient {
 				done = true;
 			}
 		}
+		userInput.close();
 	}
 }
