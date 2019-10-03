@@ -2,6 +2,7 @@
 //Programmer 2: Noah Ku
 //October 1, 2019
 //APCS 3rd Period
+//This code will give you the greatest number, smallest number, sum of all the even numbers, and the greatest even number out of a list of numbers.
 
 import java.util.*;
 
