@@ -193,7 +193,7 @@ public class Calculate {
 		return guess;
 	}
 	
-	public static String quadform(int a, int b, int c) {
+	public static String quadForm(int a, int b, int c) {
 		//A call to quadform uses the coefficients of a quadratic equation in standard form and uses the quadratic formula to approximate the real roots, if any.
 		if (discriminant(a, b, c) < 0) {
 			return "No real roots";
