@@ -23,6 +23,6 @@ public class DoMath {
 		System.out.println(Calculate.isPrime(19));
 		System.out.println(Calculate.gcf(45, 6));
 		System.out.println(Calculate.sqrt(121));
-		System.out.println(Calculate.quadform(1, -6, 9));
+		System.out.println(Calculate.quadForm(1, -6, 9));
 	}
 }
