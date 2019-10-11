@@ -22,15 +22,21 @@ public class Hourglass {
 			System.out.println("/");
 		}
 		System.out.println("     ||");
-		for (int row2 = 4; row2 >= 1; row2--) {
-			for (int space2 = row2; space2 >= 1; space2--) {
+		for (int row2 = 6; row2 <= 9; row2++) {
+			for (int space2 = 9; space2 >= row2; space2++) {
 				System.out.print(" ");
 			}
-			System.out.print("\\");;
+			System.out.print("/");
 			int numColon2 = 2 * row2 - 10;
 			for (int colon2 = numColon2; colon2 > 0; colon2--) {
 				System.out.print(":");
-			}
+			} 
+			System.out.println("\\");
 		}
+		System.out.print("|");
+		for (int i = 0; i < 10; i++) {
+			System.out.print("\"");
+		}
+		System.out.print("|");
 	}
 }
