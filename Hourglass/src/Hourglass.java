@@ -27,7 +27,15 @@ public class Hourglass {
 		}
 		System.out.println("||");
 		for (int row2 = size / 2 + 1; row2 <= size; row2++) {
-			for (int space2 = )
+			for (int space2 = size; space2 > size / 2; space2--) {
+				System.out.print(" ");
+			}
+			System.out.print("/");
+			int numColon2 = 2 * row2 - size;
+			for (int colon2 = size; colon2 > numColon2; colon2++) {
+				System.out.print(":");
+			}
+			System.out.println("\\");
 		}
 	}
 }
