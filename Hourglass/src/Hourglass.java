@@ -13,15 +13,15 @@
 
 public class Hourglass {
 	public static void main(String[] args) {
-		int size = 100;
-		//firstLastLine
-		//topHalf
-		//middle
-		//bottomHalf
-		//firstLastLine
+		int size = 11;
+		firstLastLine(size);
+		topHalf(size);
+		middle(size);
+		bottomHalf(size);
+		firstLastLine(size);
 	}
 	
-	public static void firstLastLine(String[] args) {
+	public static void firstLastLine(int size) {
 		System.out.print("|");
 		for (int i = 0; i < size; i++) {
 			System.out.print("\"");
@@ -29,7 +29,7 @@ public class Hourglass {
 		System.out.println("|");
 	}
 	
-	public static void topHalf(String[] args) {
+	public static void topHalf(int size) {
 		for (int row = 1; row <= (size / 2 - 1); row++) {
 			for (int space = 1; space <= row; space++) {
 				System.out.print(" ");
@@ -39,18 +39,18 @@ public class Hourglass {
 			for (int colon = 1; colon <= numColon; colon++) {
 				System.out.print(":");
 			}
-			System.out.println("/");
+		System.out.println("/");
 		}
 	}
 	
-	public static void middle(String[] args) {
+	public static void middle(int size) {
 		for (int i = 0; i <= (size / 2 - 1); i++) {
 			System.out.print(" ");
 		}
 		System.out.println("||");
 	}
 	
-	public static void bottomHalf(String[] args) {
+	public static void bottomHalf(int size) {
 		for (int row2 = size / 2 + 1; row2 <= size; row2++) {
 			for (int space2 = row2; space2 < size; space2++) {
 				System.out.print(" ");
