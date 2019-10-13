@@ -3,14 +3,33 @@
 //APCS Period 3
 //This code prints out an hourglass figure using nested loops.
 
+//Your code should print the basic 11 line hourglass. 
+//It should use nested loops and use less than 11 println or prints.  (I can do it with one print.)
+//Export the .java file and submit it.
+	//make it print different sizes
+	//make it repeat for different inputs
+	//deal with any size -- even or odd
+	//make a new method to replace tophalf and bottomhalf
+
 public class Hourglass {
 	public static void main(String[] args) {
-		int size = 100;													//Size adjustable, odd numbers don't work
+		int size = 100;
+		//firstLastLine
+		//topHalf
+		//middle
+		//bottomHalf
+		//firstLastLine
+	}
+	
+	public static void firstLastLine(String[] args) {
 		System.out.print("|");
 		for (int i = 0; i < size; i++) {
 			System.out.print("\"");
 		}
 		System.out.println("|");
+	}
+	
+	public static void topHalf(String[] args) {
 		for (int row = 1; row <= (size / 2 - 1); row++) {
 			for (int space = 1; space <= row; space++) {
 				System.out.print(" ");
@@ -22,10 +41,16 @@ public class Hourglass {
 			}
 			System.out.println("/");
 		}
+	}
+	
+	public static void middle(String[] args) {
 		for (int i = 0; i <= (size / 2 - 1); i++) {
 			System.out.print(" ");
 		}
 		System.out.println("||");
+	}
+	
+	public static void bottomHalf(String[] args) {
 		for (int row2 = size / 2 + 1; row2 <= size; row2++) {
 			for (int space2 = row2; space2 < size; space2++) {
 				System.out.print(" ");
@@ -37,10 +62,5 @@ public class Hourglass {
 			}
 			System.out.println("\\");
 		}
-		System.out.print("|");
-		for (int i = 0; i < size; i++) {
-			System.out.print("\"");
-		}
-		System.out.println("|");
 	}
 }
