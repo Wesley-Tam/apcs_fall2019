@@ -5,7 +5,7 @@
 
 public class Hourglass {
 	public static void main(String[] args) {
-		int size = 10;
+		int size = 100;													//Size adjustable, odd numbers don't work
 		System.out.print("|");
 		for (int i = 0; i < size; i++) {
 			System.out.print("\"");
@@ -27,15 +27,20 @@ public class Hourglass {
 		}
 		System.out.println("||");
 		for (int row2 = size / 2 + 1; row2 <= size; row2++) {
-			for (int space2 = size; space2 > size / 2; space2--) {
+			for (int space2 = row2; space2 < size; space2++) {
 				System.out.print(" ");
 			}
 			System.out.print("/");
 			int numColon2 = 2 * row2 - size;
-			for (int colon2 = size; colon2 > numColon2; colon2++) {
+			for (int colon2 = 0; colon2 < numColon2; colon2++) {
 				System.out.print(":");
 			}
 			System.out.println("\\");
 		}
+		System.out.print("|");
+		for (int i = 0; i < size; i++) {
+			System.out.print("\"");
+		}
+		System.out.println("|");
 	}
 }
