@@ -13,7 +13,7 @@
 
 public class Hourglass {
 	public static void main(String[] args) {
-		int size = 11;
+		int size = 101;
 		firstLastLine(size);
 		topHalf(size);
 		middle(size);
@@ -47,7 +47,11 @@ public class Hourglass {
 		for (int i = 0; i <= (size / 2 - 1); i++) {
 			System.out.print(" ");
 		}
-		System.out.println("||");
+		 if (size % 2 == 0) {
+			 System.out.println("||");
+		 } else {
+			 System.out.println("\\:/");
+		 }
 	}
 	
 	public static void bottomHalf(int size) {
