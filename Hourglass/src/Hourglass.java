@@ -13,12 +13,20 @@ public class Hourglass {
 		firstLastLine(size);
 	}
 	
-	public static void space(int x) {	//reduce number of print/printlns
+	public static void space(int a) {	//reduce number of print/printlns
 		System.out.print(" ");
 	}
 	
-	public static void colon(int y) {	//reduce number of print/printlns
+	public static void colon(int b) {	//reduce number of print/printlns
 		System.out.print(":");
+	}
+	
+	public static void slash(int c) {	//reduce number of print/printlns
+		System.out.println("/");
+	}
+	
+	public static void backslash(int d) {	//reduce number of print/printlns
+		System.out.print("\\");
 	}
 	
 	public static void firstLastLine(int size) {
@@ -34,11 +42,11 @@ public class Hourglass {
 			for (int space = 1; space <= row; space++) {
 				space(1);
 			}
-			System.out.print("\\");
+			backslash(1);
 			for (int colon = 1; colon <= (-2 * row + size); colon++) {
 				colon(1);
 			}
-		System.out.println("/");
+		slash(1);
 		}
 	}
 	
@@ -49,7 +57,10 @@ public class Hourglass {
 		 if (size % 2 == 0) {
 			 System.out.println("||");
 		 } else {
-			 System.out.println("\\:/");
+			 backslash(1);
+			 colon(1);
+			 slash(1);
+			 
 		 }
 	}
 	
