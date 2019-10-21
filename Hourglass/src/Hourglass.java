@@ -5,7 +5,7 @@
 
 public class Hourglass {
 	public static void main(String[] args) {
-		int size = 11;
+		int size = 10;
 		firstLastLine(size);
 		topHalf(size);
 		middle(size);
