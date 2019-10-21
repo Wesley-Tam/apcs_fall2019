@@ -2,9 +2,10 @@
 //October 21, 2019
 //It processes a string and uses the split method to process strings
 
+import java.util.*;
+
 public class Split {
 	public static void main(String[] args) {
-
 // Your task Part 0
 //String.split();
 //It's a method that acts on a string, <StringName>.split(<sp>);
@@ -16,17 +17,35 @@ public class Split {
 // it will split at the word "really" and return an array of ["I "," like ","red apples!"]
 //play around with String.split!
 //What happens if you "I reallyreally likeapples".split("really") ?
-
-		String[] outputArray = "I like apples".split(" ");
-		System.out.println(outputArray.toString());
+		String[] example1 = "I like apples".split(" ");
+		System.out.println(Arrays.toString(example1));
 		
+		String[] example2 = "I really like really red apples!".split("really");
+		System.out.println(Arrays.toString(example2));
+		
+		String[] example3 = "I reallyreally likeapples".split("really");
+		System.out.println(Arrays.toString(example3));
+		
+		sandwich("applespineapplesbreadlettucetomatobaconmayohambreadcheese");
+	}
+	
 //Your task Part 1:
 /*Write a method that take in a string like
 * "applespineapplesbreadlettucetomatobaconmayohambreadcheese"
 * describing a sandwich.
-* Use String.split to split up the sandwich by the word "bread" and return what's in the middle of
-* the sandwich and ignores what's on the outside
+* Use String.split to split up the sandwich by the word "bread" and return what's in the middle
+* of the sandwich and ignores what's on the outside
 * What if it's a fancy sandwich with multiple pieces of bread?
+*/
+
+		public static void sandwich(String contents) {
+			for (int i = 0; i < contents.length(); i++) {
+				if ((contents.substring(i, i + 5)).equals("bread")) {
+					contents = contents.substring(i);
+				}
+			}
+			System.out.println(contents);
+		}
 
 //Your task pt 2:
 /*Write a method that take in a string like
@@ -38,6 +57,5 @@ public class Split {
 */
 
 	}
-}
 
 
