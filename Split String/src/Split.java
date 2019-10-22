@@ -26,7 +26,7 @@ public class Split {
 		String[] example3 = "I reallyreally likeapples".split("really");
 		System.out.println(Arrays.toString(example3));
 		
-		sandwich("applespineapplesbreadlettucetomatobaconmayohambreadcheese");
+		System.out.println(sandwich1("applespineapplesbreadlettucetomatobaconmayohambreadcheese"));
 	}
 	
 //Your task Part 1:
@@ -38,13 +38,14 @@ public class Split {
 * What if it's a fancy sandwich with multiple pieces of bread?
 */
 
-		public static void sandwich(String contents) {
+		public static String sandwich1(String contents) {
+			String[] inside = contents.split("bread");
+			int bread1 = "-1";
 			for (int i = 0; i < contents.length(); i++) {
-				if ((contents.substring(i, i + 5)).equals("bread")) {
-					contents = contents.substring(i);
-				}
+				bread1 = contents.indexOf("bread");
 			}
-			System.out.println(contents);
+			System.out.println(Arrays.toString(inside));
+			return inside[1];
 		}
 
 //Your task pt 2:
@@ -56,6 +57,9 @@ public class Split {
 * Again, what if it's a fancy sandwich with multiple pieces of bread?
 */
 
-	}
+		public static String sandwich2(String contents) {
+			
+		}
+}
 
 
