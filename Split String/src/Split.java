@@ -26,7 +26,7 @@ public class Split {
 		String[] example3 = "I reallyreally likeapples".split("really");
 		System.out.println(Arrays.toString(example3));
 		
-		System.out.println(sandwich1("applespineapplesbreadlettucetomatobaconmayohambreadcheese"));
+		System.out.println(sandwich1("breadlettucetomatobaconmayohambread"));
 	}
 	
 //Your task Part 1:
@@ -40,10 +40,15 @@ public class Split {
 
 		public static String sandwich1(String contents) {
 			String[] inside = contents.split("bread");
-			int bread1 = "-1";
-			for (int i = 0; i < contents.length(); i++) {
-				bread1 = contents.indexOf("bread");
+			int bread1 = -1;
+			int bread2 = -1;
+			for (int i = 0; i < contents.length(); i++) {	//find first bread
+				bread1 = contents.indexOf("bread");			//bread1 = index of letter before bread
 			}
+			for (int i = contents.length(); i >= 0; i--) {
+				bread2 = contents.indexOf("bread");
+			}
+			System.out.println(bread2);
 			System.out.println(Arrays.toString(inside));
 			return inside[1];
 		}
