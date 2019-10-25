@@ -14,7 +14,7 @@ public class ArraysLab3 {
 		System.out.println(Arrays.toString(append(arr3, 5)));
 		
 		int[] arr4 = {1, 2, 3, 4};
-		System.out.println(Arrays., key))
+		System.out.println(Arrays.toString(remove(arr4, 2)));
 	}
 	
 	public static int[] sum(int[] arr1, int[] arr2) {
