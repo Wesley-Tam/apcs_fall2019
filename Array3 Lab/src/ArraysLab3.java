@@ -55,4 +55,19 @@ public class ArraysLab3 {
 		}
 		return removeArray;
 	}
+	
+	public static int sumEven(int[] arr) {
+		//Write a method sumEven that accepts an array of integers arr and returns an integer 
+		//containing the sum of the elements at the even indices of arr.  (That means elements
+		//at indices 0,2,4,6,8.)  You can assume arr has at least one element.
+		
+	}
+	
+	public static void rotateRight(int[] arr) {
+		//Write a method rotateRight that accepts an array of integers arr and does not return 
+		//a value.  The rotateRight method moves each element of arr one index to the right 
+		//(element 0 goes to element 1, element 1 goes to element 2, …, element n-1 goes to 
+		//element 0).  You can assume arr has at least one element.
+		
+	}
 }
