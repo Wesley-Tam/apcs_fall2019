@@ -6,15 +6,36 @@ import java.util.*;
 
 public class ArraysLab3 {
 	public static void main(String[] args) {
-		int[] arr1 = {1, 2, 3, 4};
-		int[] arr2 = {2, 3, 4, 5};
-		System.out.println(Arrays.toString(sum(arr1, arr2)));
+		//integer arrays a1, a2, sumArr, appendArr, removeArr
+		//int variables appendNum, removeIdx, sumOfEvens
+		//Carry out the following actions
+		//Declare array a1 containing the values (5, 10, 15, 20, 25, 30, 35, 40) and array a2 containing the values (7, 14, 21, 28, 35, 42, 49, 56)
+		//Form sumArr by calling the sum method with a1 and a2 as inputs
+		//Declare int appendNum and set it to 200.
+		//Form appendArr by calling the append method with a1 and appendNum as inputs
+		//Declare int removeIdx and set it to 5.
+		//Form removeArr by calling remove with a2 and removeIdx
+		//Form sumOfEvens by calling sumEven with appendArr as the input
+		//Call rotateRight with a1 as the input
+		//On their own lines print out (use Arrays.toString to transform arrays into a printable strings) :
+		//sumArr
+		//appendArr
+		//removeArr
+		//sumOfEvens (an int you don’t need Arrays.toString)
+		//a1
+		int[] a1 = {5, 10, 15, 20, 25, 30, 35, 40};
+		int[] a2 = {7, 14, 21, 28, 35, 42, 49, 56};
+		System.out.println(Arrays.toString(sum(a1, a2)));
 		
-		int[] arr3 = {1, 2, 3, 4};
-		System.out.println(Arrays.toString(append(arr3, 5)));
+		int[] appendArr = {1, 2, 3, 4};
+		int appendNum = 200;
+		System.out.println(Arrays.toString(append(appendArr, appendNum)));
 		
-		int[] arr4 = {1, 2, 3, 4};
-		System.out.println(Arrays.toString(remove(arr4, 2)));
+		int[] removeArr = {1, 2, 3, 4, 8};
+		System.out.println(Arrays.toString(remove(removeArr, 2)));
+		
+		int[] arr5 = {1, 2, 3, 16, 10, 11, 99};
+		System.out.println(sumEven(arr5));
 	}
 	
 	public static int[] sum(int[] arr1, int[] arr2) {
@@ -50,8 +71,8 @@ public class ArraysLab3 {
 		for (int i = 0; i < idx; i++) {
 			removeArray[i] = arr[i];
 		}
-		for (int i = idx + 1; i < removeArray.length; i++) {
-			removeArray[i] = arr[i];
+		for (int i = idx + 1; i <= removeArray.length; i++) {
+			removeArray[i - 1] = arr[i];
 		}
 		return removeArray;
 	}
@@ -60,7 +81,17 @@ public class ArraysLab3 {
 		//Write a method sumEven that accepts an array of integers arr and returns an integer 
 		//containing the sum of the elements at the even indices of arr.  (That means elements
 		//at indices 0,2,4,6,8.)  You can assume arr has at least one element.
-		
+		int sum = 0;
+		if (arr.length % 2 == 0) {
+			for (int i = 0; i < arr.length / 2; i++) {
+				sum += arr[2 * i];
+			}
+		} else {
+			for (int i = 0; i < arr.length / 2 + 1; i++) {
+				sum += arr[2 * i];
+			}
+		}
+		return sum;
 	}
 	
 	public static void rotateRight(int[] arr) {
