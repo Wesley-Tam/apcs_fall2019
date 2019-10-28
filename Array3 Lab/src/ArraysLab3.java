@@ -6,37 +6,21 @@ import java.util.*;
 
 public class ArraysLab3 {
 	public static void main(String[] args) {
-		//Form sumArr by calling the sum method with a1 and a2 as inputs
-		//Declare int appendNum and set it to 200.
-		//Form appendArr by calling the append method with a1 and appendNum as inputs
-		//Declare int removeIdx and set it to 5.
-		//Form removeArr by calling remove with a2 and removeIdx
-		//Form sumOfEvens by calling sumEven with appendArr as the input
-		//Call rotateRight with a1 as the input
-		//On their own lines print out (use Arrays.toString to transform arrays into a printable strings) :
-		//sumArr
-		//appendArr
-		//removeArr
-		//sumOfEvens (an int you don’t need Arrays.toString)
-		//a1
 		int[] a1 = {5, 10, 15, 20, 25, 30, 35, 40};
 		int[] a2 = {7, 14, 21, 28, 35, 42, 49, 56};
-		System.out.println(Arrays.toString(sum(a1, a2)));
-		
-		int[] appendArr = {1, 2, 3, 4};
+		int[] sumArr = sum(a1, a2);
 		int appendNum = 200;
-		System.out.println(Arrays.toString(append(appendArr, appendNum)));
+		int[] appendArr = append(a1, appendNum);
+		int removeIdx = 5;
+		int[] removeArr = remove(a2, removeIdx);
+		int sumOfEvens = sumEven(appendArr);
+		rotateRight(a1);
 		
-		int[] removeArr = {1, 2, 3, 4, 8};
-		int removeIdx = 2;
-		System.out.println(Arrays.toString(remove(removeArr, removeIdx)));
-		
-		int[] arr5 = {1, 2, 3, 4};
-		int sumOfEvens = sumEven(arr5);
+		System.out.println(Arrays.toString(sumArr));
+		System.out.println(Arrays.toString(appendArr));
+		System.out.println(Arrays.toString(removeArr));
 		System.out.println(sumOfEvens);
-		
-		int[] arr6 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-		rotateRight(arr6);
+		System.out.println(Arrays.toString(a1));
 	}
 	
 	public static int[] sum(int[] arr1, int[] arr2) {
