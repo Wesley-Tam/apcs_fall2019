@@ -1,6 +1,6 @@
 //Wesley Tam
 //October 21, 2019
-//It processes a string and uses the split method to process strings
+//This code splits a string to return the elements between two specific elements
 
 import java.util.*;
 
@@ -27,6 +27,7 @@ public class Split {
 		System.out.println(Arrays.toString(example3));
 		
 		System.out.println(sandwich1("breadlettucetomatobaconmayohambread"));
+		System.out.println(sandwich2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
 	}
 	
 //Your task Part 1:
@@ -38,20 +39,11 @@ public class Split {
 * What if it's a fancy sandwich with multiple pieces of bread?
 */
 
-		public static String sandwich1(String contents) {
-			String[] inside = contents.split("bread");
-			int bread1 = -1;
-			int bread2 = -1;
-			for (int i = 0; i < contents.length(); i++) {	//find first bread
-				bread1 = contents.indexOf("bread");			//bread1 = index of letter before bread
-			}
-			for (int i = contents.length(); i >= 0; i--) {
-				bread2 = contents.indexOf("bread");
-			}
-			System.out.println(bread2);
-			System.out.println(Arrays.toString(inside));
-			return inside[1];
-		}
+	public static String sandwich1(String contents) {
+		String[] inside = contents.split("bread");
+		System.out.println(Arrays.toString(inside));
+		return inside[1];
+	}
 
 //Your task pt 2:
 /*Write a method that take in a string like
@@ -62,9 +54,24 @@ public class Split {
 * Again, what if it's a fancy sandwich with multiple pieces of bread?
 */
 
-		public static String sandwich2(String contents) {
-			
+	public static String sandwich2(String contents) {
+		String[] sandwich2 = contents.split(" ");
+		int bread2 = -2;
+		int bread1 = -2;
+		String inside = "";
+		for (int i = 0; i < sandwich2.length; i++) {
+			if (sandwich2[i].equals("bread")) {
+				bread1 = i;		//second bread
+			}
 		}
+		for (int i = sandwich2.length - 1; i >= 0; i--) {
+			if (sandwich2[i].contentEquals("bread")) {
+				bread2 = i; 	//first bread
+			}
+		}
+		for (int i = bread2 + 1; i < bread1; i++) {
+			inside += sandwich2[i] + "  ";
+		}
+		return inside;
+	}
 }
-
-
