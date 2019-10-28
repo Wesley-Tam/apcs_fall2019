@@ -6,10 +6,6 @@ import java.util.*;
 
 public class ArraysLab3 {
 	public static void main(String[] args) {
-		//integer arrays a1, a2, sumArr, appendArr, removeArr
-		//int variables appendNum, removeIdx, sumOfEvens
-		//Carry out the following actions
-		//Declare array a1 containing the values (5, 10, 15, 20, 25, 30, 35, 40) and array a2 containing the values (7, 14, 21, 28, 35, 42, 49, 56)
 		//Form sumArr by calling the sum method with a1 and a2 as inputs
 		//Declare int appendNum and set it to 200.
 		//Form appendArr by calling the append method with a1 and appendNum as inputs
@@ -32,10 +28,12 @@ public class ArraysLab3 {
 		System.out.println(Arrays.toString(append(appendArr, appendNum)));
 		
 		int[] removeArr = {1, 2, 3, 4, 8};
-		System.out.println(Arrays.toString(remove(removeArr, 2)));
+		int removeIdx = 2;
+		System.out.println(Arrays.toString(remove(removeArr, removeIdx)));
 		
-		int[] arr5 = {1};
-		System.out.println(sumEven(arr5));
+		int[] arr5 = {1, 2, 3, 4};
+		int sumOfEvens = sumEven(arr5);
+		System.out.println(sumOfEvens);
 		
 		int[] arr6 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
 		rotateRight(arr6);
