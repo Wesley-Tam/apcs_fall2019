@@ -1,6 +1,6 @@
 //Wesley Tam
 //October 25, 2019
-//This code will 
+//This code practices different array problems along with the Arrays class
 
 import java.util.*;
 
@@ -34,8 +34,11 @@ public class ArraysLab3 {
 		int[] removeArr = {1, 2, 3, 4, 8};
 		System.out.println(Arrays.toString(remove(removeArr, 2)));
 		
-		int[] arr5 = {1, 2, 3, 16, 10, 11, 99};
+		int[] arr5 = {1};
 		System.out.println(sumEven(arr5));
+		
+		int[] arr6 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+		rotateRight(arr6);
 	}
 	
 	public static int[] sum(int[] arr1, int[] arr2) {
@@ -80,7 +83,7 @@ public class ArraysLab3 {
 	public static int sumEven(int[] arr) {
 		//Write a method sumEven that accepts an array of integers arr and returns an integer 
 		//containing the sum of the elements at the even indices of arr.  (That means elements
-		//at indices 0,2,4,6,8.)  You can assume arr has at least one element.
+		//at indices 0,2,4,6,8.) You can assume arr has at least one element.
 		int sum = 0;
 		if (arr.length % 2 == 0) {
 			for (int i = 0; i < arr.length / 2; i++) {
@@ -96,9 +99,15 @@ public class ArraysLab3 {
 	
 	public static void rotateRight(int[] arr) {
 		//Write a method rotateRight that accepts an array of integers arr and does not return 
-		//a value.  The rotateRight method moves each element of arr one index to the right 
+		//a value. The rotateRight method moves each element of arr one index to the right 
 		//(element 0 goes to element 1, element 1 goes to element 2, …, element n-1 goes to 
-		//element 0).  You can assume arr has at least one element.
-		
+		//element 0). You can assume arr has at least one element.
+		int[] rightArray = new int[arr.length];
+		int temp = arr[arr.length - 1];
+		for (int i = 0; i < arr.length - 1; i++) {
+			rightArray[i + 1] = arr[i];
+		}
+		rightArray[0] = temp;
+		System.out.println(Arrays.toString(rightArray));
 	}
 }
