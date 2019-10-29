@@ -23,9 +23,9 @@ public class Split {
 		System.out.println(Arrays.toString(example2));
 		String[] example3 = "I reallyreally likeapples".split("really");
 		System.out.println(Arrays.toString(example3));
-		System.out.println(sandwich1("applespineapplesbreadlettucetomatobreadbaconmayohambreadcheese"));
-		//sandwich1("applespineapplesbreadlettucetomatobaconmayohambreadcheese");
-		System.out.println(sandwich2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
+		System.out.println(sandwich1("applespineapplesbreadlettucetomatobaconmayohambreadcheese"));
+		//sandwich1("breadapplespineappleslettucetomatobaconmayohamcheesebread");
+		//System.out.println(sandwich2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
 	}
 
 	public static String sandwich1(String contents) {
@@ -36,9 +36,18 @@ public class Split {
 		//Use String.split to split up the sandwich by the word "bread" and return what's in the middle
 		//of the sandwich and ignores what's on the outside
 		//What if it's a fancy sandwich with multiple pieces of bread?
-		int firstBread = -2;
-		int lastBread = -2;
-		String ingredients = "";
+		
+		//int firstBread = -2;
+		//int lastBread = -2;
+		/*String ingredients = "";
+		String[] inside = contents.split("bread");
+		for (int i = 1; i < inside.length - 1; i++) {
+			ingredients += inside[i];
+		}
+		if (inside.length <= 2) {
+			ingredients = "Not a sandwich";
+		}
+		System.out.println(ingredients);
 		for (int i = 0; i < contents.length() - 4; i++) {
 			if ((contents.substring(i, i + 5)).equals("bread")) {
 				lastBread = i;
@@ -54,12 +63,23 @@ public class Split {
 		} else {
 			ingredients = contents.substring(firstBread, lastBread);
 		}
-		System.out.println(firstBread); //l of lettuce
-		System.out.println(lastBread);  //b of bread
-		return ingredients;
+		*/
+		//return ingredients;
+		
+		contents = contents + " ";
+		String inside = "";
+		String[] ingredients = contents.split("bread");
+		if (ingredients.length >= 3) {
+			for (int i = 1; i < ingredients.length - 1; i++) {
+				inside += ingredients[i];
+			}
+		} else {
+			inside = "Not a sandwich";
+		}
+		return inside;
 	}
 
-	public static String sandwich2(String contents) {
+	//public static String sandwich2(String contents) {
 		//Your task pt 2:
 		//Write a method that take in a string like
 		//"apples pineapples bread lettuce tomato bacon mayo ham bread cheese"
@@ -67,7 +87,8 @@ public class Split {
 		//use String.split to split up the sandwich at the spaces, " ", and return what's in the middle of
 		//the sandwich and ignores what's on the outside.
 		//Again, what if it's a fancy sandwich with multiple pieces of bread?
-		String[] sandwich2 = contents.split(" ");
+		
+		/*String[] sandwich2 = contents.split(" ");
 		int firstBread = -2;
 		int lastBread = -2;
 		String answer = "";
@@ -82,11 +103,12 @@ public class Split {
 			}
 		}
 		for (int i = firstBread + 1; i < lastBread; i++) {
-			answer += sandwich2[i] + "  ";
+			answer += sandwich2[i] + " ";
 		}
 		if (firstBread == lastBread) {
 			answer = "Not a sandwich";
 		}
 		return answer;
+		*/
 	}
 }
