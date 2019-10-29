@@ -90,6 +90,5 @@ public class ArraysLab3 {
 			rightArray[i + 1] = arr[i];
 		}
 		rightArray[0] = temp;
-		System.out.println(Arrays.toString(rightArray));
 	}
 }
