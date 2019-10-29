@@ -23,12 +23,12 @@ public class Split {
 		System.out.println(Arrays.toString(example2));
 		String[] example3 = "I reallyreally likeapples".split("really");
 		System.out.println(Arrays.toString(example3));
-		//System.out.println(sandwich1("applespineapplesbreadlettucetomatobaconmayohambreadcheese"));
-		sandwich1("applespineapplesbreadlettucetomatobaconmayohambreadcheese");
+		System.out.println(sandwich1("applespineapplesbreadlettucetomatobreadbaconmayohambreadcheese"));
+		//sandwich1("applespineapplesbreadlettucetomatobaconmayohambreadcheese");
 		System.out.println(sandwich2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
 	}
 
-	public static void sandwich1(String contents) {
+	public static String sandwich1(String contents) {
 		//Your task Part 1:
 		//Write a method that take in a string like
 		//"applespineapplesbreadlettucetomatobaconmayohambreadcheese"
@@ -38,15 +38,25 @@ public class Split {
 		//What if it's a fancy sandwich with multiple pieces of bread?
 		int firstBread = -2;
 		int lastBread = -2;
-		//String[] inside = contents.split("bread");
-		//System.out.println(Arrays.toString(inside));
+		String ingredients = "";
 		for (int i = 0; i < contents.length() - 4; i++) {
-			if ((contents.substring(i, i + 4)).equals("bread")) {
+			if ((contents.substring(i, i + 5)).equals("bread")) {
 				lastBread = i;
 			}
 		}
-		System.out.println(lastBread);
-		//return inside[1];
+		for (int i = contents.length(); i >= 5; i--) {
+			if ((contents.substring(i - 5, i).contentEquals("bread"))) {
+				firstBread = i;
+			}
+		}
+		if ((firstBread - 5) == lastBread) {
+			ingredients = "Not a sandwich";
+		} else {
+			ingredients = contents.substring(firstBread, lastBread);
+		}
+		System.out.println(firstBread); //l of lettuce
+		System.out.println(lastBread);  //b of bread
+		return ingredients;
 	}
 
 	public static String sandwich2(String contents) {
