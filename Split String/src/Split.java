@@ -23,9 +23,9 @@ public class Split {
 		System.out.println(Arrays.toString(example2));
 		String[] example3 = "I reallyreally likeapples".split("really");
 		System.out.println(Arrays.toString(example3));
-		System.out.println(sandwich1("applespineapplesbreadlettucetomatobaconmayohambreadcheese"));
+		System.out.println(sandwich1("breadlettucetomatobaconmayohambread"));
 		//sandwich1("breadapplespineappleslettucetomatobaconmayohamcheesebread");
-		//System.out.println(sandwich2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
+		System.out.println(sandwich2("apples bread lettuce tomato bacon mayo ham bread cheese"));
 	}
 
 	public static String sandwich1(String contents) {
@@ -79,7 +79,7 @@ public class Split {
 		return inside;
 	}
 
-	//public static String sandwich2(String contents) {
+	public static String sandwich2(String contents) {
 		//Your task pt 2:
 		//Write a method that take in a string like
 		//"apples pineapples bread lettuce tomato bacon mayo ham bread cheese"
@@ -88,8 +88,8 @@ public class Split {
 		//the sandwich and ignores what's on the outside.
 		//Again, what if it's a fancy sandwich with multiple pieces of bread?
 		
-		/*String[] sandwich2 = contents.split(" ");
-		int firstBread = -2;
+		//String[] sandwich2 = contents.split(" ");
+		/*int firstBread = -2;
 		int lastBread = -2;
 		String answer = "";
 		for (int i = 0; i < sandwich2.length; i++) {
@@ -110,5 +110,12 @@ public class Split {
 		}
 		return answer;
 		*/
+		String[] sandwich2 = contents.split(" ");
+		String inside = "";
+		for (int i = 0; i < sandwich2.length; i++) {
+			inside += sandwich2[i];
+		}
+		String ingredients = sandwich1(inside);
+		return ingredients;
 	}
 }
