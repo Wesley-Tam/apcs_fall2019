@@ -3,11 +3,15 @@
 //This code is a calculator for fractions and returns fractions in mixed number form
 
 package fracCalc;
+import java.util.*;
 
 public class FracCalc {
     public static void main(String[] args) {
-        // TODO: Read the input from the user and call produceAnswer with an equation
-    	
+    	// TODO: Read the input from the user and call produceAnswer with an equation
+    	Scanner userInput = new Scanner(System.in);
+    	System.out.println("What integers and/or fractions do you want to add/subtract/multiply/divide?");
+    	String equation = userInput.nextLine();
+    	System.out.println(produceAnswer(equation));
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -19,7 +23,10 @@ public class FracCalc {
     
     public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
-        
+        String[] operators = input.split(" ");
+        String frac1 = operators[0];
+        char op = operators[1];
+        String 
         return "";
     }
 
