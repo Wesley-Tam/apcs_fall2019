@@ -5,7 +5,7 @@
 
 public class Hourglass {
 	public static void main(String[] args) {
-		int size = 10;
+		int size = 11;
 		firstLastLine(size);
 		topHalf(size);
 		middle(size);
@@ -65,7 +65,7 @@ public class Hourglass {
 	}
 	
 	public static void bottomHalf(int size) {
-		for (int row2 = (size / 2 + 1); row2 <= size; row2++) {
+		for (int row2 = (size / 2 + 1); row2 <= size - 1; row2++) {
 			for (int space2 = row2; space2 < size; space2++) {
 				space(1);
 			}
