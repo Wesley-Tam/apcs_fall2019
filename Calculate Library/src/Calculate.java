@@ -122,10 +122,10 @@ public class Calculate {
 		double answer = num;
 		if (exp < 0) {
 			throw new IllegalArgumentException("This code cannot use negative exponents");
-		} else if (exp == 0) {
-			answer = 1;
 		} else if (exp == 0 && num == 0) {
 			throw new IllegalArgumentException("Zero to the power of 0 is undefined");
+		} else if (exp == 0) {
+			answer = 1;
 		}
 		while (i != exp) {
 			answer *= num;
@@ -140,7 +140,7 @@ public class Calculate {
 		if (num < 0) {
 			throw new IllegalArgumentException("This code cannot handle negative numbers");
 		} else if (num == 0) {
-			answer = 0;
+			answer = 1;
 		}
 		for (int i = 1; i < num; i++) {
 			 answer = answer * i;
