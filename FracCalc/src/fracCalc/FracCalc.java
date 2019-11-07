@@ -33,12 +33,14 @@ public class FracCalc {
     
     public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
-        String whole1 = "";
-        String num1 = "";
-        String denom1 = "";
-        String whole2 = "";
-        String num2 = "";
-        String denom2 = "";
+        int whole1 = 0;		//whole number of frac1
+        int num1 = 0;		//numerator of frac1
+        int denom1 = 0;		//denominator of frac1
+        int whole2 = 0;		//whole number of frac2
+        int num2 = 0;		//numerator of frac2
+        int denom2 = 0;		//denominator of frac2
+        int numer1 = 0;		//improper numerator of frac1
+        int numer2 = 0;		//improper numerator of frac2
         
     	String[] operators = input.split(" ");
     	
@@ -49,19 +51,19 @@ public class FracCalc {
         	if (sectest1.length > 1) {	//fraction
         		val1 = "0_" + val1;
         		String[] desc1 = wholeNumDenom(val1);
-        		whole1 = desc1[0];
-        		num1 = desc1[1];
-        		denom1 = desc1[2];
-        	} else if (sectest1.length == 1) {
-        		whole1 = test1[0];
-        		num1 = "0";
-        		denom1 = "1";
+        		whole1 = Integer.parseInt(desc1[0]);
+        		num1 = Integer.parseInt(desc1[1]);
+        		denom1 = Integer.parseInt(desc1[2]);
+        	} else if (sectest1.length == 1) {	//integer
+        		whole1 = Integer.parseInt(test1[0]);
+        		num1 = 0;
+        		denom1 = 1;
         	}
         } else {
         	String[] desc1 = wholeNumDenom(val1);
-        	whole1 = desc1[0];
-        	num1 = desc1[1];
-        	denom1 = desc1[2];
+        	whole1 = Integer.parseInt(desc1[0]);
+        	num1 = Integer.parseInt(desc1[1]);
+        	denom1 = Integer.parseInt(desc1[2]);
         }
         
         String op = operators[1];
@@ -73,19 +75,31 @@ public class FracCalc {
         	if (sectest2.length > 1) {	//fraction
         		val2 = "0_" + val2;
         		String[] desc2 = wholeNumDenom(val2);
-        		whole2 = desc2[0];
-        		num2 = desc2[1];
-        		denom2 = desc2[2];
+        		whole2 = Integer.parseInt(desc2[0]);
+        		num2 = Integer.parseInt(desc2[1]);
+        		denom2 = Integer.parseInt(desc2[2]);
         	} else if (sectest2.length == 1) {	//integer
-        		whole2 = test2[0];
-        		num2 = "0";
-        		denom2 = "1";
+        		whole2 = Integer.parseInt(test2[0]);
+        		num2 = 0;
+        		denom2 = 1;
         	}
         } else {
         	String[] desc2 = wholeNumDenom(val2);
-        	whole2 = desc2[0];
-        	num2 = desc2[1];
-        	denom2 = desc2[2];
+        	whole2 = Integer.parseInt(desc2[0]);
+        	num2 = Integer.parseInt(desc2[1]);
+        	denom2 = Integer.parseInt(desc2[2]);
+        }
+        
+        if (whole1 != 0) {
+        	numer1 = improp(whole1, num1, denom1);	//improper frac1
+        } else if (whole2 != 0) {
+        	numer2 = improp(whole2, num2, denom2);	//improper frac2
+        }
+        
+        if (op.equals("+")) {
+        	//return add(numer1, denom1, numer2, denom2);
+        } else if (op.contentEquals("-")) {
+        	//return sub(numer1, denom1, numer2, denom2);
         }
         
         String desc = "whole:" + whole2 + " numerator:" + num2 + " denominator:" + denom2;
@@ -102,4 +116,42 @@ public class FracCalc {
         return answer;
     }
     
+    public static int improp (int whole1, int num1, int denom1) {
+    	int numer1 = whole1 * denom1 + num1;
+    	return numer1;
+    }
+    
+    public static int comdenom (int denom1, int denom2) {
+    	int max = (int)max(denom1, denom2);
+		int min = min(denom1, denom2);
+		int gcf = 1;
+		if (isDivisibleBy(max, min) == true) {
+			return min;
+		} else if (max - min == 1) {
+			gcf = 1;
+		} else if (isPrime(max) == true || isPrime(min) == true) {
+			gcf = 1;
+		} else {
+			for (int i = min; i > 1; i--) {
+				if (isDivisibleBy(max, i) == true && isDivisibleBy(min, i) == true) {
+					gcf = i;
+				}
+			}
+		}
+		return gcf;
+    }
+    
+    public static String add (int numer1, int denom1, int numer2, int denom2) {
+    	int ansnum = numer1 + numer2;
+    	return (ansnum + "/" + denom1);
+    }
+    
+    public static String sub (int numer1, int denom1, int numer2, int denom2) {
+    	int ansnum = numer1 - numer2;
+    	return (ansnum + "/" + denom1);
+    }
+    
+    public static String times (int numer1, int denom1, int numer2, int denom2) {
+    	
+    }
 }
