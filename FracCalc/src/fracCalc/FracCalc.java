@@ -97,13 +97,14 @@ public class FracCalc {
         }
         
         if (op.equals("+")) {
-        	//return add(numer1, denom1, numer2, denom2);
-        } else if (op.contentEquals("-")) {
-        	//return sub(numer1, denom1, numer2, denom2);
+        	return add(numer1, denom1, numer2, denom2);
+        } else if (op.equals("-")) {
+        	return sub(numer1, denom1, numer2, denom2);
+        } else if (op.equals("*")) {
+        	return multiply(numer1, denom1, numer2, denom2);
+        } else {
+        	return divide(numer1, denom1, numer2, denom2);
         }
-        
-        String desc = "whole:" + whole2 + " numerator:" + num2 + " denominator:" + denom2;
-        return desc;
     }
 
     public static String[] wholeNumDenom (String input) {
@@ -121,8 +122,52 @@ public class FracCalc {
     	return numer1;
     }
     
-    public static int comdenom (int denom1, int denom2) {
-    	int max = (int)max(denom1, denom2);
+    public static double max(double num1, double num2) {
+		//A call to max returns the larger of the values passed. The method accepts two doubles and returns a double.
+		if (num1 > num2) {
+			return num1;
+		} else {
+			return num2;
+		}
+	}
+    
+    public static int min(int num1, int num2) {
+		//A call to min returns the smaller of the values passed. The method accepts two doubles and returns an int.
+		if (num1 < num2) {
+			return num1;
+		} else {
+			return num2;
+		}
+	}
+    
+    public static boolean isDivisibleBy(int numerator, int denominator) {
+		//A call to isDivisibleBy determines whether or not one integer is evenly divisible by another. The method accepts two integers and returns a boolean.
+		if (denominator == 0) {
+			throw new IllegalArgumentException("Cannot divide by zero");
+		}
+		if (numerator % denominator == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+    
+    public static boolean isPrime(int num) {
+		//A call to isPrime determines whether or not an integer is prime. The method accepts an integer and returns a boolean. To receive full credit, the method should call another method in your library.
+		boolean answer = true;
+		for (int i = 2; i < num; i++) {
+			boolean result = isDivisibleBy(num, i);
+			if (result == true) {
+				answer = false;
+			}
+		}
+		return answer;
+	}
+
+	public static int gcf(int denom1, int denom2) {
+		//A call to gcf finds the greatest common factor of two integers. The method accepts two positive integers and returns an integer. To receive full credit, the method should call another method you've already written for this library.
+		//Done with the help of Caleb Ng and Sabien
+		int max = (int)max(denom1, denom2);
 		int min = min(denom1, denom2);
 		int gcf = 1;
 		if (isDivisibleBy(max, min) == true) {
@@ -139,19 +184,36 @@ public class FracCalc {
 			}
 		}
 		return gcf;
-    }
+	}
     
     public static String add (int numer1, int denom1, int numer2, int denom2) {
-    	int ansnum = numer1 + numer2;
-    	return (ansnum + "/" + denom1);
+    	int gcf = gcf(denom1, denom2);
+    	int lcm = (denom1 / gcf) * denom2;
+    	numer1 = numer1 * (lcm / denom1);
+    	numer2 = numer2 * (lcm / denom2);
+    	int num = numer1 + numer2;
+    	//return num + "/" + lcm;
+    	return gcf + "";
     }
     
     public static String sub (int numer1, int denom1, int numer2, int denom2) {
-    	int ansnum = numer1 - numer2;
-    	return (ansnum + "/" + denom1);
+    	int gcf = gcf(denom1, denom2);
+    	int lcm = (denom1 / gcf) * denom2;
+    	numer1 = numer1 * (lcm / denom1);
+    	numer2 = numer2 * (lcm / denom2);
+    	int num = numer1 - numer2;
+    	return num + "/" + lcm;
     }
     
-    public static String times (int numer1, int denom1, int numer2, int denom2) {
-    	
+    public static String multiply (int numer1, int denom1, int numer2, int denom2) {
+    	int num = numer1 * numer2;
+    	int denom = denom1 * denom2;
+    	return num + "/" + denom;
+    }
+    
+    public static String divide (int numer1, int denom1, int numer2, int denom2) {
+    	int num = numer1 * denom2;
+    	int denom = denom1 * numer2;
+    	return num + "/" + denom;
     }
 }
