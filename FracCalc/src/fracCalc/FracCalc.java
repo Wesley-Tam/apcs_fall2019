@@ -41,6 +41,9 @@ public class FracCalc {
         int denom2 = 0;		//denominator of frac2
         int numer1 = 0;		//improper numerator of frac1
         int numer2 = 0;		//improper numerator of frac2
+        int[] ans = new int[2];
+        int wholeans = 0;
+        int numans = 0;
         
     	String[] operators = input.split(" ");
     	
@@ -89,21 +92,47 @@ public class FracCalc {
         	num2 = Integer.parseInt(desc2[1]);
         	denom2 = Integer.parseInt(desc2[2]);
         }
-        
         if (whole1 != 0) {
         	numer1 = improp(whole1, num1, denom1);	//improper frac1
-        } else if (whole2 != 0) {
+        } else {
+        	numer1 = num1;
+        	
+        } if (whole2 != 0) {
         	numer2 = improp(whole2, num2, denom2);	//improper frac2
+        } else {
+        	numer2 = num2;
         }
         
         if (op.equals("+")) {
-        	return add(numer1, denom1, numer2, denom2);
+        	int[] addfrac = add(numer1, denom1, numer2, denom2);
+        	ans[0] = addfrac[0];
+        	ans[1] = addfrac[1];
         } else if (op.equals("-")) {
-        	return sub(numer1, denom1, numer2, denom2);
+        	int[] subfrac = sub(numer1, denom1, numer2, denom2);
+        	ans[0] = subfrac[0];
+        	ans[1] = subfrac[1];
         } else if (op.equals("*")) {
-        	return multiply(numer1, denom1, numer2, denom2);
+        	int[] multifrac = multiply(numer1, denom1, numer2, denom2);
+        	ans[0] = multifrac[0];
+        	ans[1] = multifrac[1];
         } else {
-        	return divide(numer1, denom1, numer2, denom2);
+        	int[] divfrac = divide(numer1, denom1, numer2, denom2);
+        	ans[0] = divfrac[0];
+        	ans[1] = divfrac[1];
+        }
+        //return whole1 + " " + num1 + " " + denom1 + " " + whole2 + " " + num2 + " " + denom2 + " " + numer1 + " " + numer2 + " " + ans[0] + " " + ans[1]; 
+        if (absValue(ans[0]) > absValue(ans[1])) {
+        	if (ans[0] >= 0) {
+        		wholeans = ans[0] / ans[1];
+        		numans = ans[0] % ans[1];
+        		return wholeans + "_" + numans + "/" + ans[1];
+        	} else {
+        		wholeans = ans[0] / ans[1];
+        		numans = (ans[0] * -1) % ans[1];
+        		return wholeans + "_" + numans + "/" + ans[1];
+        	}
+        } else {
+        	return ans[0] + "/" + ans[1];
         }
     }
 
@@ -117,10 +146,24 @@ public class FracCalc {
         return answer;
     }
     
-    public static int improp (int whole1, int num1, int denom1) {
-    	int numer1 = whole1 * denom1 + num1;
-    	return numer1;
+    public static int improp (int whole, int num, int denom) {
+    	int numer;
+    	if (whole > 0) {
+    		numer = (whole * denom) + num;
+    	} else {
+    		numer = (whole * denom) - num;
+    	}
+    	return numer;
     }
+    
+    public static double absValue(double num) {
+		//A call to absValue returns the absolute value of the number passed. The method accepts a double and returns a double.
+		if (num >= 0) {
+			return num;
+		} else {
+			return (num * -1);
+		}
+	}
     
     public static double max(double num1, double num2) {
 		//A call to max returns the larger of the values passed. The method accepts two doubles and returns a double.
@@ -186,34 +229,41 @@ public class FracCalc {
 		return gcf;
 	}
     
-    public static String add (int numer1, int denom1, int numer2, int denom2) {
+    public static int[] add (int numer1, int denom1, int numer2, int denom2) {
     	int gcf = gcf(denom1, denom2);
-    	int lcm = (denom1 / gcf) * denom2;
+    	int lcm = (denom1 / gcf) * denom2;	//common denominator
     	numer1 = numer1 * (lcm / denom1);
     	numer2 = numer2 * (lcm / denom2);
     	int num = numer1 + numer2;
-    	//return num + "/" + lcm;
-    	return gcf + "";
+    	int[] frac = {num, lcm};
+    	return frac;
     }
     
-    public static String sub (int numer1, int denom1, int numer2, int denom2) {
+    public static int[] sub (int numer1, int denom1, int numer2, int denom2) {
     	int gcf = gcf(denom1, denom2);
     	int lcm = (denom1 / gcf) * denom2;
     	numer1 = numer1 * (lcm / denom1);
     	numer2 = numer2 * (lcm / denom2);
     	int num = numer1 - numer2;
-    	return num + "/" + lcm;
+    	int[] frac = {num, lcm};
+    	return frac;
     }
     
-    public static String multiply (int numer1, int denom1, int numer2, int denom2) {
+    public static int[] multiply (int numer1, int denom1, int numer2, int denom2) {
     	int num = numer1 * numer2;
     	int denom = denom1 * denom2;
-    	return num + "/" + denom;
+    	int[] frac = {num, denom};
+    	return frac;
     }
     
-    public static String divide (int numer1, int denom1, int numer2, int denom2) {
+    public static int[] divide (int numer1, int denom1, int numer2, int denom2) {
     	int num = numer1 * denom2;
     	int denom = denom1 * numer2;
-    	return num + "/" + denom;
+    	if (denom < 0) {
+    		num = num * -1;
+    		denom = denom * -1;
+    	}
+    	int[] frac = {num, denom};
+    	return frac;
     }
 }
