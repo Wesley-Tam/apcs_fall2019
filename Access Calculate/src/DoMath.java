@@ -18,11 +18,11 @@ public class DoMath {
 		System.out.println(Calculate.max(-1, -5, 1000));
 		System.out.println(Calculate.min(4, -1));
 		System.out.println(Calculate.round2(5.1));
-		System.out.println(Calculate.exponent(0, 0));
+		System.out.println(Calculate.exponent(1, 1));
 		System.out.println(Calculate.factorial(3));
 		System.out.println(Calculate.isPrime(19));
 		System.out.println(Calculate.gcf(45, 6));
-		System.out.println(Calculate.sqrt(121));
+		System.out.println(Calculate.sqrt(0));
 		System.out.println(Calculate.quadForm(1, -6, 9));
 	}
 }
