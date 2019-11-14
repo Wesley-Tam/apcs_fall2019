@@ -33,17 +33,17 @@ public class FracCalc {
     
     public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
-        int whole1 = 0;		//whole number of frac1
-        int num1 = 0;		//numerator of frac1
-        int denom1 = 0;		//denominator of frac1
-        int whole2 = 0;		//whole number of frac2
-        int num2 = 0;		//numerator of frac2
-        int denom2 = 0;		//denominator of frac2
-        int numer1 = 0;		//improper numerator of frac1
-        int numer2 = 0;		//improper numerator of frac2
-        int[] ans = new int[2];
-        int wholeans = 0;
-        int numans = 0;
+        int whole1 = 0;				//whole number of frac1
+        int num1 = 0;				//numerator of frac1
+        int denom1 = 0;				//denominator of frac1
+        int whole2 = 0;				//whole number of frac2
+        int num2 = 0;				//numerator of frac2
+        int denom2 = 0;				//denominator of frac2
+        int numer1 = 0;				//improper numerator of frac1
+        int numer2 = 0;				//improper numerator of frac2
+        int[] ans = new int[2];		//Array of numerator and denominator of fraction after add, sub, multi, div
+        int wholeans = 0;			//Whole number of return value
+        int numans = 0;				//Numerator of return value
         
     	String[] operators = input.split(" ");
     	
@@ -112,15 +112,26 @@ public class FracCalc {
         	ans[0] = subfrac[0];
         	ans[1] = subfrac[1];
         } else if (op.equals("*")) {
-        	int[] multifrac = multiply(numer1, denom1, numer2, denom2);
-        	ans[0] = multifrac[0];
-        	ans[1] = multifrac[1];
+        	if (Integer.parseInt(operators[0]) == 0 || Integer.parseInt(operators[2]) == 0) {
+        		return 0 + "";
+        	} else {
+        		int[] multifrac = multi(numer1, denom1, numer2, denom2);
+        		ans[0] = multifrac[0];
+        		ans[1] = multifrac[1];
+        	}
         } else {
         	int[] divfrac = divide(numer1, denom1, numer2, denom2);
         	ans[0] = divfrac[0];
         	ans[1] = divfrac[1];
         }
         //return whole1 + " " + num1 + " " + denom1 + " " + whole2 + " " + num2 + " " + denom2 + " " + numer1 + " " + numer2 + " " + ans[0] + " " + ans[1]; 
+       
+        if (isDivisibleBy(ans[0], ans[1]) == true) {
+        	int gcf = gcf(ans[0], ans[1]);
+        	ans[0] = ans[0] / gcf;
+        	ans[1] = ans[1] / gcf;
+        }
+        
         if (absValue(ans[0]) > absValue(ans[1])) {
         	if (ans[0] >= 0) {
         		wholeans = ans[0] / ans[1];
@@ -131,6 +142,8 @@ public class FracCalc {
         		numans = (ans[0] * -1) % ans[1];
         		return wholeans + "_" + numans + "/" + ans[1];
         	}
+        } else if (numans == 0) {
+        	return wholeans + "";
         } else {
         	return ans[0] + "/" + ans[1];
         }
@@ -249,7 +262,7 @@ public class FracCalc {
     	return frac;
     }
     
-    public static int[] multiply (int numer1, int denom1, int numer2, int denom2) {
+    public static int[] multi (int numer1, int denom1, int numer2, int denom2) {
     	int num = numer1 * numer2;
     	int denom = denom1 * denom2;
     	int[] frac = {num, denom};
