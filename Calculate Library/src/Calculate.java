@@ -42,12 +42,27 @@ public class Calculate {
 		
 	public static String toImproperFrac(int wholenum, int numerator, int denominator) {
 		//A call to toImproperFrac converts a mixed number (with pieces provided separately in the order of a whole number, numerator, then denominator) into an improper fraction. The method accepts three integers and returns a String (For example, to convert 3 and 1/2 into an improper fraction: toImproperFrac (3, 1, 2). This call would return the String: "7/2").
-		return (wholenum * denominator + numerator + "/" + denominator); 
+		if (denominator == 0) {
+			throw new IllegalArgumentException("Use another denominator other than zero");
+		} else {
+			return (wholenum * denominator + numerator + "/" + denominator);
+		}
 	}
 	
 	public static String toMixedNum(int numerator, int denominator) {
 		//A call to toMixedNum converts an improper fraction (with pieces provided separately in the order numerator then denominator) into a mixed number. The method accepts two integers and returns a String (For example, to convert 7/2 into a mixed number: toMixedNum (7, 2). This call would return the String: "3_1/2").
-		return (numerator/denominator + "_" + numerator%denominator + "/" + denominator); 
+		if (denominator == 0) {
+			throw new IllegalArgumentException("Use another denominator other than zero");
+		}
+		if (denominator < 0) {
+			denominator = denominator * -1;
+			numerator = numerator * -1;
+		}
+		if ((numerator/denominator < 0) && (numerator%denominator < 0)) {
+			return (numerator/denominator + "_" + (numerator % denominator * -1) + "/" + denominator);
+		} else {
+			return (numerator/denominator + "_" + numerator % denominator + "/" + denominator);
+		}
 	}
 	
 	public static String foil(int a,int b, int c, int d, String x) {
@@ -106,19 +121,23 @@ public class Calculate {
 		}
 	}
 	
-	public static double round2(double num) {
+	public static double round2 (double num) {
 		//A call to round2 rounds a double a double correctly to 2 decimal places and returns a double.
-		num =  (num * 100);
-		num = (num + 0.5);
+		num =  num * 100;
+		if (num <= 0) {
+			num = num - 0.5;
+		} else {
+			num = num + 0.5;
+		}
 		num = (int)num;	
 		num = num/100;
-		num = (double)num;
 		return num;
 	}
 	
 	public static double exponent(double num, int exp) {
 		//A call to exponent raises a value to a positive integer power. The method accepts a double and an integer and returns a double. For the time being, you can assume that the exponent is positive.
-		int i = 1;
+		//Improved speed and efficiency with help of Sebastian Law
+		/*int i = 1;
 		double answer = num;
 		if (exp < 0) {
 			throw new IllegalArgumentException("This code cannot use negative exponents");
@@ -130,6 +149,22 @@ public class Calculate {
 		while (i != exp) {
 			answer *= num;
 			i++;
+		}
+		return answer;*/
+		
+		int i = 1;
+		double answer = num;
+		if (exp < 0) {
+			throw new IllegalArgumentException("This code cannot use negative exponents");
+		} else if (exp == 0 && num == 0) {
+			throw new IllegalArgumentException("Zero to the power of 0 is undefined");
+		} else if (exp == 0) {
+			answer = 1;
+		} else {
+			while (i != exp) {
+				answer *= num;
+				i++;
+			}
 		}
 		return answer;
 	}
@@ -150,14 +185,18 @@ public class Calculate {
 	
 	public static boolean isPrime(int num) {
 		//A call to isPrime determines whether or not an integer is prime. The method accepts an integer and returns a boolean. To receive full credit, the method should call another method in your library.
-		boolean answer = true;
-		for (int i = 2; i < num; i++) {
-			boolean result = isDivisibleBy(num, i);
-			if (result == true) {
-				answer = false;
+		if (num < 1) {
+			return false;
+		} else {
+			boolean answer = true;
+			for (int i = 2; i < num; i++) {
+				boolean result = isDivisibleBy(num, i);
+				if (result == true) {		//"if (result) {" also works
+					answer = false;
+				}
 			}
+			return answer;
 		}
-		return answer;
 	}
 
 	public static int gcf(int x, int y) {
