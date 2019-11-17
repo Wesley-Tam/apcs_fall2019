@@ -124,16 +124,14 @@ public class FracCalc {
         }
         
         if (ans[0] == 0) {
-        	ans[1] = 1;
+        	return 0 + "";
         } else if (isDivisibleBy(ans[1], ans[0]) == true) {
-        	int gcf = gcf(ans[1], ans[0]);
+        	int gcf = gcf(ans[0], ans[1]);
         	ans[0] = ans[0] / gcf;
         	ans[1] = ans[1] / gcf;
-        } else {
-        	
         }
         
-        if (absValue(ans[0]) > absValue(ans[1])) {		//improper to mixed number
+        if (absValue(ans[0]) > absValue(ans[1])) {		//improper to mixed number (if num > denom)
         	if (ans[0] >= 0) {
         		wholeans = ans[0] / ans[1];
         		numans = ans[0] % ans[1];
@@ -143,21 +141,14 @@ public class FracCalc {
         		numans = (ans[0] * -1) % ans[1];
         		return wholeans + "_" + numans + "/" + ans[1];
         	}
+        } else if (ans[0] == ans[1]) {					//if num and denom are same number, return whole number
+        	wholeans = wholeans + 1;
+        	return wholeans + "";
         } else {
         	return ans[0] + "/" + ans[1];
         }
-        //return whole1 + " " + num1 + " " + denom1 + " " + whole2 + " " + num2 + " " + denom2 + " " + numer1 + " " + numer2 + " " + ans[0] + " " + ans[1]; 
-
-        /*if (isDivisibleBy(ans[1], numans) == true) {
-        	if (numans == 0) {
-        		numans = 1;
-        	} else {
-        		int gcf = gcf(numans, ans[1]);
-        		numans = numans / gcf;
-        		ans[1] = ans[1] / gcf;
-        	}
-        }*/
-        //return wholeans + "_" + numans + "/" + ans[1];
+        //return whole1 + " " + num1 + " " + denom1 + " " + whole2 + " " + num2 + " " + denom2 + " " + numer1 + " " + numer2 + " " + ans[0] + " " + ans[1] + " " + wholeans + " " + numans; 
+        
     }
 
     public static String[] wholeNumDenom (String input) {
