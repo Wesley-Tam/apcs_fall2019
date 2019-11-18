@@ -124,10 +124,16 @@ public class FracCalc {
         
         if (ans[0] == 0) {								//improper fraction, right after add/sub/multi/div math
         	return "0";
-        } else {										//Reduces fraction (GCF CANNOT ACCOUNT FOR NEGATIVE NUMBERS)
-        	int gcf = gcf(ans[0], ans[1]);
-        	ans[0] = ans[0] / gcf;
-        	ans[1] = ans[1] / gcf;
+        } else {										//Reduces fraction
+        	if (ans[0] < 0) {
+        		int gcf = gcf(-ans[0], ans[1]);
+        		ans[0] = ans[0] / gcf;
+        		ans[1] = ans[1] / gcf;
+        	} else {
+        		int gcf = gcf(ans[0], ans[1]);
+        		ans[0] = ans[0] / gcf;
+        		ans[1] = ans[1] / gcf;
+        	}
         }
         
         if (absValue(ans[0]) > absValue(ans[1])) {		//if num > denom
