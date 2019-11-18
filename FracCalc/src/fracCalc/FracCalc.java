@@ -32,7 +32,6 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     
     public static String produceAnswer(String input) { 
-        // TODO: Implement this function to produce the solution to the input
         int whole1 = 0;				//whole number of frac1
         int num1 = 0;				//numerator of frac1
         int denom1 = 0;				//denominator of frac1
@@ -48,16 +47,16 @@ public class FracCalc {
     	String[] operators = input.split(" ");
     	
         String val1 = operators[0];
-        String[] test1 = val1.split("_");	//tests if there is an underscore
-        if (test1.length == 1) {	//either integer or fraction
+        String[] test1 = val1.split("_");					//tests if there is an underscore
+        if (test1.length == 1) {							//either integer or fraction
         	String[] sectest1 = test1[0].split("/");
-        	if (sectest1.length > 1) {	//fraction
+        	if (sectest1.length > 1) {							//if fraction
         		val1 = "0_" + val1;
         		String[] desc1 = wholeNumDenom(val1);
         		whole1 = Integer.parseInt(desc1[0]);
         		num1 = Integer.parseInt(desc1[1]);
         		denom1 = Integer.parseInt(desc1[2]);
-        	} else if (sectest1.length == 1) {	//integer
+        	} else if (sectest1.length == 1) {					//if integer
         		whole1 = Integer.parseInt(test1[0]);
         		num1 = 0;
         		denom1 = 1;
@@ -73,15 +72,15 @@ public class FracCalc {
         
         String val2 = operators[2];
         String[] test2 = val2.split("_");
-        if (test2.length == 1) {	//either integer or fraction
+        if (test2.length == 1) {							//either integer or fraction
         	String[] sectest2 = test2[0].split("/");
-        	if (sectest2.length > 1) {	//fraction
+        	if (sectest2.length > 1) {							//if fraction
         		val2 = "0_" + val2;
         		String[] desc2 = wholeNumDenom(val2);
         		whole2 = Integer.parseInt(desc2[0]);
         		num2 = Integer.parseInt(desc2[1]);
         		denom2 = Integer.parseInt(desc2[2]);
-        	} else if (sectest2.length == 1) {	//integer
+        	} else if (sectest2.length == 1) {					//if integer
         		whole2 = Integer.parseInt(test2[0]);
         		num2 = 0;
         		denom2 = 1;
@@ -123,32 +122,33 @@ public class FracCalc {
         	ans[1] = divfrac[1];
         }
         
-        if (ans[0] == 0) {
-        	return 0 + "";
-        } else if (isDivisibleBy(ans[1], ans[0]) == true) {
+        if (ans[0] == 0) {								//improper fraction, right after add/sub/multi/div math
+        	return "0";
+        } else {										//Reduces fraction (GCF CANNOT ACCOUNT FOR NEGATIVE NUMBERS)
         	int gcf = gcf(ans[0], ans[1]);
         	ans[0] = ans[0] / gcf;
         	ans[1] = ans[1] / gcf;
         }
         
-        if (absValue(ans[0]) > absValue(ans[1])) {		//improper to mixed number (if num > denom)
-        	if (ans[0] >= 0) {
-        		wholeans = ans[0] / ans[1];
+        if (absValue(ans[0]) > absValue(ans[1])) {		//if num > denom
+        	wholeans = ans[0] / ans[1];
+        	if (ans[0] > ans[1]) {							//positive num
         		numans = ans[0] % ans[1];
-        		return wholeans + "_" + numans + "/" + ans[1];
+        	} else if (ans[0] < ans[1]) {					//negative num
+        		numans = ans[0] % ans[1] * -1;
+        	}
+        	if (numans == 0) {
+        		return wholeans + "";
         	} else {
-        		wholeans = ans[0] / ans[1];
-        		numans = (ans[0] * -1) % ans[1];
         		return wholeans + "_" + numans + "/" + ans[1];
         	}
-        } else if (ans[0] == ans[1]) {					//if num and denom are same number, return whole number
+        } else if (ans[0] == ans[1]) {					//if num and denom are same number
         	wholeans = wholeans + 1;
         	return wholeans + "";
-        } else {
+        } else {										//if num < denom
         	return ans[0] + "/" + ans[1];
         }
         //return whole1 + " " + num1 + " " + denom1 + " " + whole2 + " " + num2 + " " + denom2 + " " + numer1 + " " + numer2 + " " + ans[0] + " " + ans[1] + " " + wholeans + " " + numans; 
-        
     }
 
     public static String[] wholeNumDenom (String input) {
