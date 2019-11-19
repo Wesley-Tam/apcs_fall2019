@@ -212,7 +212,7 @@ public class Calculate {
 		} else if (isPrime(max) == true || isPrime(min) == true) {
 			gcf = 1;
 		} else {
-			for (int i = min; i > 1; i--) {
+			for (int i = 2; i > min; i++) {
 				if (isDivisibleBy(max, i) == true && isDivisibleBy(min, i) == true) {
 					gcf = i;
 				}
