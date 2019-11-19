@@ -118,19 +118,19 @@ public class FracCalc {
        		ans[1] = multifrac[1];
         } else {
         	int[] divfrac = divide(numer1, denom1, numer2, denom2);
-        	ans[0] = divfrac[0];
-        	ans[1] = divfrac[1];
+        	ans[0] = divfrac[0];						//num
+        	ans[1] = divfrac[1];						//denom
         }
         
         if (ans[0] == 0) {								//improper fraction, right after add/sub/multi/div math
         	return "0";
         } else {										//Reduces fraction
         	if (ans[0] < 0) {
-        		int gcf = gcf(-ans[0], ans[1]);
+        		int gcf = gcf(-ans[0], ans[1]);				//Deals with negative number gcf
         		ans[0] = ans[0] / gcf;
         		ans[1] = ans[1] / gcf;
         	} else {
-        		int gcf = gcf(ans[0], ans[1]);
+        		int gcf = gcf(ans[0], ans[1]);				//gcf to simplify
         		ans[0] = ans[0] / gcf;
         		ans[1] = ans[1] / gcf;
         	}
@@ -152,9 +152,10 @@ public class FracCalc {
         	wholeans = wholeans + 1;
         	return wholeans + "";
         } else {										//if num < denom
-        	return ans[0] + "/" + ans[1];
+        	//return ans[0] + "/" + ans[1];
+        	return gcf(ans[0], ans[1])+ " " + ans[0] + " " + ans[1];
         }
-        //return whole1 + " " + num1 + " " + denom1 + " " + whole2 + " " + num2 + " " + denom2 + " " + numer1 + " " + numer2 + " " + ans[0] + " " + ans[1] + " " + wholeans + " " + numans; 
+        //return whole1 + " " + num1 + " " + denom1 + " " + whole2 + " " + num2 + " " + denom2 + " " + numer1 + " " + numer2 + " " + ans[0] + " " + ans[1] + " " + gcf(ans[0], ans[1]) + "" + wholeans + " " + numans; 
     }
 
     public static String[] wholeNumDenom (String input) {
@@ -177,7 +178,7 @@ public class FracCalc {
     	return numer;
     }
     
-    public static double absValue(double num) {
+    public static int absValue(int num) {
 		//A call to absValue returns the absolute value of the number passed. The method accepts a double and returns a double.
 		if (num >= 0) {
 			return num;
@@ -231,8 +232,8 @@ public class FracCalc {
 	public static int gcf(int denom1, int denom2) {
 		//A call to gcf finds the greatest common factor of two integers. The method accepts two positive integers and returns an integer. To receive full credit, the method should call another method you've already written for this library.
 		//Done with the help of Caleb Ng and Sabien
-		int max = (int)max(denom1, denom2);
-		int min = min(denom1, denom2);
+		int max = absValue((int)max(denom1, denom2));
+		int min = absValue(min(denom1, denom2));
 		int gcf = 1;
 		if (isDivisibleBy(max, min) == true) {
 			return min;
