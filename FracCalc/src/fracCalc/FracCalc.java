@@ -7,7 +7,6 @@ import java.util.*;
 
 public class FracCalc {
     public static void main(String[] args) {
-    	// TODO: Read the input from the user and call produceAnswer with an equation
     	Scanner userInput = new Scanner(System.in);
     	boolean done = false;
 		while (done != true) {
@@ -32,110 +31,40 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     
     public static String produceAnswer(String input) { 
-        int whole1 = 0;				//whole number of frac1
-        int num1 = 0;				//numerator of frac1
-        int denom1 = 0;				//denominator of frac1
-        int whole2 = 0;				//whole number of frac2
-        int num2 = 0;				//numerator of frac2
-        int denom2 = 0;				//denominator of frac2
-        int numer1 = 0;				//improper numerator of frac1
-        int numer2 = 0;				//improper numerator of frac2
-        int[] ans = new int[2];		//Array of numerator and denominator of fraction after add, sub, multi, div
+        int[] ans = new int[3];		//Array of numerator and denominator of fraction after add, sub, multi, div
         int wholeans = 0;			//Whole number of return value
         int numans = 0;				//Numerator of return value
-        
     	String[] operators = input.split(" ");
-    	
-        String val1 = operators[0];
-        String[] test1 = val1.split("_");					//tests if there is an underscore
-        if (test1.length == 1) {							//either integer or fraction
-        	String[] sectest1 = test1[0].split("/");
-        	if (sectest1.length > 1) {							//if fraction
-        		val1 = "0_" + val1;
-        		String[] desc1 = wholeNumDenom(val1);
-        		whole1 = Integer.parseInt(desc1[0]);
-        		num1 = Integer.parseInt(desc1[1]);
-        		denom1 = Integer.parseInt(desc1[2]);
-        	} else if (sectest1.length == 1) {					//if integer
-        		whole1 = Integer.parseInt(test1[0]);
-        		num1 = 0;
-        		denom1 = 1;
-        	}
-        } else {
-        	String[] desc1 = wholeNumDenom(val1);
-        	whole1 = Integer.parseInt(desc1[0]);
-        	num1 = Integer.parseInt(desc1[1]);
-        	denom1 = Integer.parseInt(desc1[2]);
+        int[] fracDesc1 = fracDesc(operators[0]);
+        int[] fracDesc2 = fracDesc(operators[2]);
+        if (fracDesc1[0] != 0) {
+        	fracDesc1[1] = improp(fracDesc1[0], fracDesc1[1], fracDesc1[2]);	//improper frac1
         }
-        
-        String op = operators[1];
-        
-        String val2 = operators[2];
-        String[] test2 = val2.split("_");
-        if (test2.length == 1) {							//either integer or fraction
-        	String[] sectest2 = test2[0].split("/");
-        	if (sectest2.length > 1) {							//if fraction
-        		val2 = "0_" + val2;
-        		String[] desc2 = wholeNumDenom(val2);
-        		whole2 = Integer.parseInt(desc2[0]);
-        		num2 = Integer.parseInt(desc2[1]);
-        		denom2 = Integer.parseInt(desc2[2]);
-        	} else if (sectest2.length == 1) {					//if integer
-        		whole2 = Integer.parseInt(test2[0]);
-        		num2 = 0;
-        		denom2 = 1;
-        	}
-        } else {
-        	String[] desc2 = wholeNumDenom(val2);
-        	whole2 = Integer.parseInt(desc2[0]);
-        	num2 = Integer.parseInt(desc2[1]);
-        	denom2 = Integer.parseInt(desc2[2]);
+        if (fracDesc2[0] != 0) {
+        	fracDesc2[1] = improp(fracDesc2[0], fracDesc2[1], fracDesc2[2]);	//improper frac2
         }
-        
-        if (whole1 != 0) {
-        	numer1 = improp(whole1, num1, denom1);	//improper frac1
-        } else {
-        	numer1 = num1;
-        } 
-        
-        if (whole2 != 0) {
-        	numer2 = improp(whole2, num2, denom2);	//improper frac2
-        } else {
-        	numer2 = num2;
-        }
-        
-        if (op.equals("+")) {
-        	int[] addfrac = add(numer1, denom1, numer2, denom2);
+        if (operators[1].equals("+") || operators[1].equals("-")) {
+        	int[] addfrac = addSub(operators[1], fracDesc1[1], fracDesc1[2], fracDesc2[1], fracDesc2[2]);
         	ans[0] = addfrac[0];
         	ans[1] = addfrac[1];
-        } else if (op.equals("-")) {
-        	int[] subfrac = sub(numer1, denom1, numer2, denom2);
-        	ans[0] = subfrac[0];
-        	ans[1] = subfrac[1];
-        } else if (op.equals("*")) {
-        	int[] multifrac = multi(numer1, denom1, numer2, denom2);
+        } else if (operators[1].equals("*") || operators[1].equals("/")) {
+        	int[] multifrac = multidiv(operators[1], fracDesc1[1], fracDesc1[2], fracDesc2[1], fracDesc2[2]);
         	ans[0] = multifrac[0];
        		ans[1] = multifrac[1];
-        } else {
-        	int[] divfrac = divide(numer1, denom1, numer2, denom2);
-        	ans[0] = divfrac[0];						//num
-        	ans[1] = divfrac[1];						//denom
         }
-        
         if (ans[0] == 0) {								//improper fraction, right after add/sub/multi/div math
         	return "0";
         } else {										//Reduces fraction
         	if (ans[0] < 0) {
         		int gcf = gcf(-ans[0], ans[1]);				//Deals with negative number gcf
-        		ans[0] = ans[0] / gcf;
-        		ans[1] = ans[1] / gcf;
+        		ans[0] /= gcf;
+        		ans[1] /= gcf;
         	} else {
         		int gcf = gcf(ans[0], ans[1]);				//gcf to simplify
-        		ans[0] = ans[0] / gcf;
-        		ans[1] = ans[1] / gcf;
+        		ans[0] /= gcf;
+        		ans[1] /= gcf;
         	}
         }
-        
         if (absValue(ans[0]) > absValue(ans[1])) {		//if num > denom
         	wholeans = ans[0] / ans[1];
         	if (ans[0] > ans[1]) {							//positive num
@@ -152,10 +81,8 @@ public class FracCalc {
         	wholeans = wholeans + 1;
         	return wholeans + "";
         } else {										//if num < denom
-        	//return ans[0] + "/" + ans[1];
-        	return gcf(ans[0], ans[1])+ " " + ans[0] + " " + ans[1];
+        	return ans[0] + "/" + ans[1];
         }
-        //return whole1 + " " + num1 + " " + denom1 + " " + whole2 + " " + num2 + " " + denom2 + " " + numer1 + " " + numer2 + " " + ans[0] + " " + ans[1] + " " + gcf(ans[0], ans[1]) + "" + wholeans + " " + numans; 
     }
 
     public static String[] wholeNumDenom (String input) {
@@ -166,6 +93,31 @@ public class FracCalc {
         String denom1 = numdenom1[1];
         String[] answer = {whole1, num1, denom1};
         return answer;
+    }
+    
+    public static int[] fracDesc (String val1) {
+    	int[] fracDesc = new int[3];
+    	String[] test1 = val1.split("_");					//tests if there is an underscore
+    	if (test1.length == 1) {							//either integer or fraction
+    		String[] sectest1 = test1[0].split("/");
+    		if (sectest1.length > 1) {							//if fraction
+    			val1 = "0_" + val1;
+    			String[] desc1 = wholeNumDenom(val1);
+    			fracDesc[0] = Integer.parseInt(desc1[0]);
+    			fracDesc[1] = Integer.parseInt(desc1[1]);
+    			fracDesc[2] = Integer.parseInt(desc1[2]);
+    		} else if (sectest1.length == 1) {					//if integer
+    			fracDesc[0] = Integer.parseInt(test1[0]);
+    			fracDesc[1] = 0;
+    			fracDesc[2] = 1;
+    		}
+    	} else {
+    		String[] desc1 = wholeNumDenom(val1);
+    		fracDesc[0] = Integer.parseInt(desc1[0]);
+    		fracDesc[1] = Integer.parseInt(desc1[1]);
+    		fracDesc[2] = Integer.parseInt(desc1[2]);
+    	}
+    	return fracDesc;
     }
     
     public static int improp (int whole, int num, int denom) {
@@ -242,7 +194,7 @@ public class FracCalc {
 		} else if (isPrime(max) == true && isPrime(min) == true) {
 			gcf = 1;
 		} else {
-			for (int i = min; i > 1; i--) {
+			for (int i = 2; i < min; i++) {
 				if (isDivisibleBy(max, i) == true && isDivisibleBy(min, i) == true) {
 					gcf = i;
 				}
@@ -251,41 +203,34 @@ public class FracCalc {
 		return gcf;
 	}
     
-    public static int[] add (int numer1, int denom1, int numer2, int denom2) {
+    public static int[] addSub (String op, int numer1, int denom1, int numer2, int denom2) {
     	int gcf = gcf(denom1, denom2);
     	int lcm = (denom1 / gcf) * denom2;	//common denominator
     	numer1 = numer1 * (lcm / denom1);
     	numer2 = numer2 * (lcm / denom2);
-    	int num = numer1 + numer2;
-    	int[] frac = {num, lcm};
-    	return frac;
-    }
-    
-    public static int[] sub (int numer1, int denom1, int numer2, int denom2) {
-    	int gcf = gcf(denom1, denom2);
-    	int lcm = (denom1 / gcf) * denom2;
-    	numer1 = numer1 * (lcm / denom1);
-    	numer2 = numer2 * (lcm / denom2);
-    	int num = numer1 - numer2;
-    	int[] frac = {num, lcm};
-    	return frac;
-    }
-    
-    public static int[] multi (int numer1, int denom1, int numer2, int denom2) {
-    	int num = numer1 * numer2;
-    	int denom = denom1 * denom2;
-    	int[] frac = {num, denom};
-    	return frac;
-    }
-    
-    public static int[] divide (int numer1, int denom1, int numer2, int denom2) {
-    	int num = numer1 * denom2;
-    	int denom = denom1 * numer2;
-    	if (denom < 0) {
-    		num = num * -1;
-    		denom = denom * -1;
+    	int num = 0;
+    	if (op.equals("+")) {
+    		num = numer1 + numer2;
+    	} else {
+    		num = numer1 - numer2;
     	}
-    	int[] frac = {num, denom};
+    	int[] frac = {num, lcm};
     	return frac;
+    }
+    
+    public static int[] multidiv (String op, int numer1, int denom1, int numer2, int denom2) {
+    	int[] numDenom = new int[2];
+    	if (op.contentEquals("*")) {		//if multiply
+    		numDenom[0] = numer1 * numer2;
+    		numDenom[1] = denom1 * denom2;
+    	} else {							//if divide
+    		numDenom[0] = numer1 * denom2;
+    		numDenom[1] = numer2 * denom1;
+    		if (numDenom[1] < 0) {
+    			numDenom[0] *= -1;
+    			numDenom[1] *= -1;
+    		}
+    	}
+    	return numDenom;
     }
 }
