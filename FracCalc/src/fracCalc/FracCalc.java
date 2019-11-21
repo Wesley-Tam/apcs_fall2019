@@ -35,8 +35,14 @@ public class FracCalc {
         int wholeans = 0;			//Whole number of return value
         int numans = 0;				//Numerator of return value
     	String[] operators = input.split(" ");
+    	if (operators.length != 3 || !operators[1].equals("+") || !operators[1].equals("-") || !operators[1].equals("*") || !operators[1].equals("/")) {
+    		return "ERROR: Input is in an imvalid format";
+    	}
         int[] fracDesc1 = fracDesc(operators[0]);
         int[] fracDesc2 = fracDesc(operators[2]);
+        if (fracDesc1[2] == 0 || fracDesc2[2] == 0) {		//Error handling for denominator 0
+        	return "ERROR: Cannot divide by 0";
+        }
         if (fracDesc1[0] != 0) {
         	fracDesc1[1] = improp(fracDesc1[0], fracDesc1[1], fracDesc1[2]);	//improper frac1
         }
