@@ -31,13 +31,13 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     
     public static String produceAnswer(String input) { 
-        int[] ans = new int[3];		//Array of numerator and denominator of fraction after add, sub, multi, div
+        int[] ans = new int[3];		//Array of numerator and denominator of fraction (whole, numerator, denominator)
         int wholeans = 0;			//Whole number of return value
         int numans = 0;				//Numerator of return value
     	String[] operators = input.split(" ");
-    	if (operators.length != 3 || !operators[1].equals("+") || !operators[1].equals("-") || !operators[1].equals("*") || !operators[1].equals("/")) {
-    		return "ERROR: Input is in an imvalid format";
-    	}
+    	/*if ((operators.length != 3) || (!operators[1].equals("+")) || (!operators[1].equals("-")) || (!operators[1].equals("*")) || (!operators[1].equals("/"))) {
+    		return "ERROR: Input is in an invalid format";
+    	}*/
         int[] fracDesc1 = fracDesc(operators[0]);
         int[] fracDesc2 = fracDesc(operators[2]);
         if (fracDesc1[2] == 0 || fracDesc2[2] == 0) {		//Error handling for denominator 0
