@@ -123,7 +123,7 @@ public class ArrayListPracticeLab {
 		String[] test_max_1 = {"to", "be", "or", "not", "to", "be", "hamlet"};  
 		String[] test_max_2 = {"Only one really long string"};
 		String[] test_max_3 = {};
-		System.out.println(maxLength(convertArrayToList(test_max_3)));
+		System.out.println(maxLength(convertArrayToList(test_max_3))); 
 		
 		// To test your swapPairs method, convert the following to ArrayLists of Strings and 
 		// pass them into your swapPairs method.  
