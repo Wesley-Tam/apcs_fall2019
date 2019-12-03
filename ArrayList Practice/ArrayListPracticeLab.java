@@ -157,7 +157,7 @@ public class ArrayListPracticeLab {
 		System.out.println(removeEvenLength(convertArrayToList(test_rem_2)));
 		
 		// To test your doubleList method, convert the following to ArrayLists of Strings and 
-		// pass them into your doubleList method.  
+		// pass them into your doubleList method. 
 		// Expected output:  
 		//    [how, how, are, are, you?, you?]
 		//    [One string only, One string only]
