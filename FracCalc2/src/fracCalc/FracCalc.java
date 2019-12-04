@@ -4,7 +4,6 @@
 
 package fracCalc;
 import java.util.*;
-//import java.StringUtils.*;
 
 public class FracCalc {
     public static void main(String[] args) {
@@ -38,11 +37,25 @@ public class FracCalc {
     	String[] operators = input.split(" ");
     	if (operators.length != 3) {
     		return "ERROR: Input is in an invalid format";
-    	} else if (Integer.parseInt(operators[2]) == 0 && operators[1].equals("/")) {
+    	}
+    	char[] error = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    	for (int i = 0; i < operators[0].length(); i++) {
+    		for (int j = 0; j < 10; i++) {
+    			if (operators[0].indexOf(i) != error[j]) {
+        			return "ERROR: Input is in an invalid format";
+        		}
+    		}
+    	}
+    	for (int i = 0; i < operators[2].length(); i++) {
+    		for (int j = 0; j < 10; i++) {
+    			if (operators[2].indexOf(i) != error[j]) {
+        			return "ERROR: Input is in an invalid format";
+        		}
+    		}
+    	}
+    	if (Integer.parseInt(operators[2]) == 0 && operators[1].equals("/")) {
     		return "ERROR: Cannot divide by 0";
-    	} //else if (isParsable(operators[0]) == false || isNumeric(operators[2]) == false)) {
-    		
-    	//}
+    	}
         int[] fracDesc1 = fracDesc(operators[0]);
         int[] fracDesc2 = fracDesc(operators[2]);
         if (fracDesc1[2] == 0 || fracDesc2[2] == 0) {		//Error handling for denominator 0
