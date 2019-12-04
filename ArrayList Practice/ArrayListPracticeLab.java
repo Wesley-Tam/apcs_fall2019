@@ -1,6 +1,6 @@
 //Wesley Tam
 //November 25, 2019
-//This code
+//This code practices ArrayList and uses it to change various arrays.
 
 import java.util.ArrayList;
 
@@ -111,8 +111,8 @@ public class ArrayListPracticeLab {
 	 */
 	
 	public static void doubleList(ArrayList<String> list) {
-		for (int i = 1; i < list.size() * 2; i += 2) {
-			list.add(i + 1, list.get(i));
+		for (int i = 0; i < list.size(); i += 2) {
+			list.add(i, list.get(i));
 		}
 		System.out.println(list);
 	}
