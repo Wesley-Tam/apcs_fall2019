@@ -40,16 +40,16 @@ public class FracCalc {
     	}
     	char[] error = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     	for (int i = 0; i < operators[0].length(); i++) {
-    		for (int j = 0; j < 10; i++) {
-    			if (operators[0].indexOf(i) != error[j]) {
-        			return "ERROR: Input is in an invalid format";
+    		for (int j = 0; j < error.length; i++) {
+    			if (operators[0].charAt(i) != error[j]) {
+        			return "ERROR: Don't use letters";
         		}
     		}
     	}
     	for (int i = 0; i < operators[2].length(); i++) {
-    		for (int j = 0; j < 10; i++) {
-    			if (operators[2].indexOf(i) != error[j]) {
-        			return "ERROR: Input is in an invalid format";
+    		for (int j = 0; j < error.length; i++) {
+    			if (operators[2].charAt(i) != error[j]) {
+        			return "ERROR: Don't use letters";
         		}
     		}
     	}
