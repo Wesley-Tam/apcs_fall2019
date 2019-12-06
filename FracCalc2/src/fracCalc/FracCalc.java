@@ -4,6 +4,7 @@
 
 package fracCalc;
 import java.util.*;
+import java.lang.Character;
 
 public class FracCalc {
     public static void main(String[] args) {
@@ -38,22 +39,66 @@ public class FracCalc {
     	if (operators.length != 3) {
     		return "ERROR: Input is in an invalid format";
     	}
-    	char[] error = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    	for (int i = 0; i < operators[0].length(); i++) {
+    	char[] error = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/'};
+    	String[] errorHand = {operators[0], operators[2]};
+    	/*for (int i = 0; i < operators[0].length(); i++) {
     		for (int j = 0; j < error.length; i++) {
-    			if (operators[0].charAt(i) != error[j]) {
+    			if (operators[0].charAt(i) != error[0]) {
         			return "ERROR: Don't use letters";
         		}
     		}
     	}
     	for (int i = 0; i < operators[2].length(); i++) {
     		for (int j = 0; j < error.length; i++) {
-    			if (operators[2].charAt(i) != error[j]) {
+    			if (operators[2].charAt(i) != error[0]) {
         			return "ERROR: Don't use letters";
         		}
     		}
     	}
-    	if (Integer.parseInt(operators[2]) == 0 && operators[1].equals("/")) {
+    	for (int i = 0; i < errorHand.length; i++) {
+    		for (int j = 0; j < errorHand[i].length(); j++) {
+    			if (errorHand[i].charAt(j) != '0') {
+    				if (errorHand[i].charAt(j) != '1') {
+    					if (errorHand[i].charAt(j) != '2') {
+    						if (errorHand[i].charAt(j) != '3') {
+    							if (errorHand[i].charAt(j) != '4') {
+    								if (errorHand[i].charAt(j) != '5') {
+    									if (errorHand[i].charAt(j) != '6') {
+    										if (errorHand[i].charAt(j) != '7') {
+    											if (errorHand[i].charAt(j) != '8') {
+    												if (errorHand[i].charAt(j) != '9') {
+    													if (errorHand[i].charAt(j) != '/') {
+    														if (errorHand[i].charAt(j) != '-') {
+    															if (errorHand[i].charAt(j) != '_') {
+    																return "Error: Don't use letters";
+    															}
+    														}
+    													}
+    												}
+    											}
+    										}
+    									}
+    								}
+    							}
+    						}
+    					}
+    				}
+    			}
+    		}
+    	}*/
+    	
+    	for (int i = 0; i < operators[0].length(); i++) {
+    		if (Character.isDigit(operators[0].charAt(i)) == false) {
+    			return "Error";
+    		}
+    	}
+    	for (int i = 0; i < operators[2].length(); i++) {
+    		if (Character.isDigit(operators[2].charAt(i)) == false) {
+    			return "Error";
+    		}
+    	}
+    	
+    	if (operators[2].equals("0") && operators[1].equals("/")) {
     		return "ERROR: Cannot divide by 0";
     	}
         int[] fracDesc1 = fracDesc(operators[0]);
@@ -260,4 +305,3 @@ public class FracCalc {
     	return numDenom;
     }
 }
-
