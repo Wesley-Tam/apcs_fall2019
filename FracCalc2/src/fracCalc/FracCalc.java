@@ -3,8 +3,8 @@
 //This code is a calculator for fractions and returns fractions in mixed number form
 
 package fracCalc;
-import java.util.*;
-import java.lang.Character;
+import java.util.*; 
+//import java.lang.Character;
 
 public class FracCalc {
     public static void main(String[] args) {
@@ -89,14 +89,35 @@ public class FracCalc {
     	
     	for (int i = 0; i < operators[0].length(); i++) {
     		if (Character.isDigit(operators[0].charAt(i)) == false) {
-    			return "Error";
+    			if (operators[0].charAt(i) != '/' && operators[0].charAt(i) != '_' && operators[0].charAt(i) != '-') {
+    				return "ERROR: Do not use letters or special characters";
+    			}
     		}
     	}
     	for (int i = 0; i < operators[2].length(); i++) {
     		if (Character.isDigit(operators[2].charAt(i)) == false) {
-    			return "Error";
+    			if (operators[2].charAt(i) != '/' && operators[2].charAt(i) != '_' && operators[2].charAt(i) != '-') {
+    				return "ERROR: Do not use letters or special characters";
+    			}
     		}
     	}
+    	
+    	/*String[] slash1 = operators[0].split("/");
+    	String[] slash2 = operators[2].split("/");
+    	String[] under11 = slash1[0].split("_");
+    	String[] under12 = slash1[1].split("_");
+    	String[] under21 = slash2[0].split("_");
+    	String[] under22 = slash2[1].split("_");
+    	
+    	for (int i = 0; i < 1; i++) {
+    		for (int j = 0; j < 1; j++) {
+    			for (int k = 0; k < 1; k++) {
+    				if (Character.isDigit(under(i)(j)(k)) == false) {
+    					
+    				}
+    			}
+    		}
+    	}*/
     	
     	if (operators[2].equals("0") && operators[1].equals("/")) {
     		return "ERROR: Cannot divide by 0";
