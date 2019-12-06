@@ -21,8 +21,8 @@ public class DoMath {
 		//System.out.println(Calculate.exponent(6, 7));
 		//System.out.println(Calculate.factorial(9));
 		//System.out.println(Calculate.isPrime(1));
-		System.out.println(Calculate.gcf(32, 24));		//will negative numbers be tested?
+		System.out.println(Calculate.gcf(16, 192));
 		System.out.println(Calculate.sqrt(347867892));
-		System.out.println(Calculate.quadForm(1, 4, 4));
+		System.out.println(Calculate.quadForm(0, 0, 0));
 	}
 }
