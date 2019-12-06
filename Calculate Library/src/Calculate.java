@@ -137,6 +137,7 @@ public class Calculate {
 	public static double exponent(double num, int exp) {
 		//A call to exponent raises a value to a positive integer power. The method accepts a double and an integer and returns a double. For the time being, you can assume that the exponent is positive.
 		//Improved speed and efficiency with help of Sebastian Law
+		
 		/*int i = 1;
 		double answer = num;
 		if (exp < 0) {
@@ -207,12 +208,10 @@ public class Calculate {
 		int gcf = 1;
 		if (isDivisibleBy(max, min) == true) {
 			return min;
-		} else if (max - min == 1) {
-			gcf = 1;
-		} else if (isPrime(max) == true || isPrime(min) == true) {
+		} else if (max - min == 1 || isPrime(x) == true || isPrime(y) == true) {
 			gcf = 1;
 		} else {
-			for (int i = 2; i > min; i++) {
+			for (int i = 2; i < min; i++) {
 				if (isDivisibleBy(max, i) == true && isDivisibleBy(min, i) == true) {
 					gcf = i;
 				}
