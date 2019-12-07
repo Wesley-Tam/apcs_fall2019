@@ -177,7 +177,7 @@ public class FracCalc {
         }
     }
 
-    public static String[] wholeNumDenom (String input) {
+    public static String[] wholeNumDenom (String input) {	//Return whole number, numerator, and denominator of an input string 
     	String[] frac1 = input.split("_");
         String whole1 = frac1[0];
         String[] numdenom1 = frac1[1].split("/");
@@ -187,7 +187,7 @@ public class FracCalc {
         return answer;
     }
     
-    public static int[] fracDesc (String val1) {
+    public static int[] fracDesc (String val1) {		//Code that checks if input string is an integer, mixed fraction, or improper fraction (and uses different code for each possible input)
     	int[] fracDesc = new int[3];
     	String[] test1 = val1.split("_");					//tests if there is an underscore
     	if (test1.length == 1) {							//either integer or fraction
@@ -212,7 +212,7 @@ public class FracCalc {
     	return fracDesc;
     }
     
-    public static int improp (int whole, int num, int denom) {
+    public static int improp (int whole, int num, int denom) {		//Takes in whole number, numerator, denominator, and converts into improper fraction
     	int numer;
     	if (whole > 0) {
     		numer = (whole * denom) + num;
@@ -295,7 +295,7 @@ public class FracCalc {
 		return gcf;
 	}
     
-    public static int[] addSub (String op, int numer1, int denom1, int numer2, int denom2) {
+    public static int[] addSub (String op, int numer1, int denom1, int numer2, int denom2) {	//Method if addition or subtraction
     	int gcf = gcf(denom1, denom2);
     	int lcm = (denom1 / gcf) * denom2;	//common denominator
     	numer1 = numer1 * (lcm / denom1);
@@ -310,7 +310,7 @@ public class FracCalc {
     	return frac;
     }
     
-    public static int[] multidiv (String op, int numer1, int denom1, int numer2, int denom2) {
+    public static int[] multidiv (String op, int numer1, int denom1, int numer2, int denom2) {	//Method if multiplication or division
     	int[] numDenom = new int[2];
     	if (op.contentEquals("*")) {		//if multiply
     		numDenom[0] = numer1 * numer2;
