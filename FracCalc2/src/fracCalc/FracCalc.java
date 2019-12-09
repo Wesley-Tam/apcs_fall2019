@@ -4,7 +4,6 @@
 
 package fracCalc;
 import java.util.*; 
-//import java.lang.Character;
 
 public class FracCalc {
     public static void main(String[] args) {
@@ -36,92 +35,15 @@ public class FracCalc {
         int wholeans = 0;			//Whole number of return value
         int numans = 0;				//Numerator of return value
     	String[] operators = input.split(" ");
+    	
     	if (operators.length != 3) {
     		return "ERROR: Input is in an invalid format";
-    	}
-    	char[] error = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/'};
-    	String[] errorHand = {operators[0], operators[2]};
-    	/*for (int i = 0; i < operators[0].length(); i++) {
-    		for (int j = 0; j < error.length; i++) {
-    			if (operators[0].charAt(i) != error[0]) {
-        			return "ERROR: Don't use letters";
-        		}
-    		}
-    	}
-    	for (int i = 0; i < operators[2].length(); i++) {
-    		for (int j = 0; j < error.length; i++) {
-    			if (operators[2].charAt(i) != error[0]) {
-        			return "ERROR: Don't use letters";
-        		}
-    		}
-    	}
-    	for (int i = 0; i < errorHand.length; i++) {
-    		for (int j = 0; j < errorHand[i].length(); j++) {
-    			if (errorHand[i].charAt(j) != '0') {
-    				if (errorHand[i].charAt(j) != '1') {
-    					if (errorHand[i].charAt(j) != '2') {
-    						if (errorHand[i].charAt(j) != '3') {
-    							if (errorHand[i].charAt(j) != '4') {
-    								if (errorHand[i].charAt(j) != '5') {
-    									if (errorHand[i].charAt(j) != '6') {
-    										if (errorHand[i].charAt(j) != '7') {
-    											if (errorHand[i].charAt(j) != '8') {
-    												if (errorHand[i].charAt(j) != '9') {
-    													if (errorHand[i].charAt(j) != '/') {
-    														if (errorHand[i].charAt(j) != '-') {
-    															if (errorHand[i].charAt(j) != '_') {
-    																return "Error: Don't use letters";
-    															}
-    														}
-    													}
-    												}
-    											}
-    										}
-    									}
-    								}
-    							}
-    						}
-    					}
-    				}
-    			}
-    		}
-    	}*/
-    	
-    	for (int i = 0; i < operators[0].length(); i++) {
-    		if (Character.isDigit(operators[0].charAt(i)) == false) {
-    			if (operators[0].charAt(i) != '/' && operators[0].charAt(i) != '_' && operators[0].charAt(i) != '-') {
-    				return "ERROR: Do not use letters or special characters";
-    			}
-    		}
-    	}
-    	for (int i = 0; i < operators[2].length(); i++) {
-    		if (Character.isDigit(operators[2].charAt(i)) == false) {
-    			if (operators[2].charAt(i) != '/' && operators[2].charAt(i) != '_' && operators[2].charAt(i) != '-') {
-    				return "ERROR: Do not use letters or special characters";
-    			}
-    		}
-    	}
-    	
-    	/*String[] slash1 = operators[0].split("/");
-    	String[] slash2 = operators[2].split("/");
-    	String[] under11 = slash1[0].split("_");
-    	String[] under12 = slash1[1].split("_");
-    	String[] under21 = slash2[0].split("_");
-    	String[] under22 = slash2[1].split("_");
-    	
-    	for (int i = 0; i < 1; i++) {
-    		for (int j = 0; j < 1; j++) {
-    			for (int k = 0; k < 1; k++) {
-    				if (Character.isDigit(under(i)(j)(k)) == false) {
-    					
-    				}
-    			}
-    		}
-    	}*/
-    	
-    	if (operators[2].equals("0") && operators[1].equals("/")) {
+    	} else if (isNumber(operators[0]) == false || isNumber(operators[2]) == false) {
+    		return "ERROR: Operators are not integers and/or fractions";
+    	} else if (operators[2].equals("0") && operators[1].equals("/")) {
     		return "ERROR: Cannot divide by 0";
     	}
+    	
         int[] fracDesc1 = fracDesc(operators[0]);
         int[] fracDesc2 = fracDesc(operators[2]);
         if (fracDesc1[2] == 0 || fracDesc2[2] == 0) {		//Error handling for denominator 0
@@ -324,5 +246,47 @@ public class FracCalc {
     		}
     	}
     	return numDenom;
+    }
+    
+    public static boolean isNumber (String input) {		//Error handling
+    	boolean ans = false;
+    	String[] ssplit = input.split("/");
+    	String[] usplit = input.split("_");
+    	if (ssplit.length == 1 && usplit.length == 1) {
+    		for (int i = 0; i < input.length(); i++) {
+    			if (Character.isDigit(input.charAt(i)) == true) {
+    				ans = true;
+    			} else {
+    				ans = false;
+    			}
+    		}
+    	} else if (ssplit.length > 2 || usplit.length > 2) {
+    		ans = false;
+    	} else if (ssplit.length == 0 || usplit.length == 0) {
+    		ans = false;
+    	} else {
+    		String[] ussplit2 = ssplit[1].split("_");
+    		if (ussplit2.length > 1) {
+    			ans = false;
+    		} else {
+    			String[] ussplit1 = ssplit[0].split("_");
+    			for (int i = 0; i < ussplit1.length; i++) {
+    				for (int j = 0; j < ussplit1[i].length(); j++) {
+    					if (Character.isDigit(ussplit1[i].charAt(j)) == true) {
+    						for (int k = 0; k < ssplit[1].length(); k++) {
+    							if (Character.isDigit(ssplit[1].charAt(k)) == true) {
+    								ans = true;
+    							} else {
+    								ans = false;
+    							}
+    						}
+    					} else {
+    						ans = false;
+    					}
+    				}
+    			}
+    		}
+    	}
+    	return ans;
     }
 }
