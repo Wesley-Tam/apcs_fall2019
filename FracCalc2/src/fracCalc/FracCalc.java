@@ -249,14 +249,12 @@ public class FracCalc {
     }
     
     public static boolean isNumber (String input) {		//Error handling
-    	boolean ans = false;
+    	boolean ans = true;
     	String[] ssplit = input.split("/");
     	String[] usplit = input.split("_");
     	if (ssplit.length == 1 && usplit.length == 1) {
     		for (int i = 0; i < input.length(); i++) {
-    			if (Character.isDigit(input.charAt(i)) == true) {
-    				ans = true;
-    			} else {
+    			if (Character.isDigit(input.charAt(i)) != true) {
     				ans = false;
     			}
     		}
@@ -274,9 +272,7 @@ public class FracCalc {
     				for (int j = 0; j < ussplit1[i].length(); j++) {
     					if (Character.isDigit(ussplit1[i].charAt(j)) == true) {
     						for (int k = 0; k < ssplit[1].length(); k++) {
-    							if (Character.isDigit(ssplit[1].charAt(k)) == true) {
-    								ans = true;
-    							} else {
+    							if (Character.isDigit(ssplit[1].charAt(k)) != true) {
     								ans = false;
     							}
     						}
