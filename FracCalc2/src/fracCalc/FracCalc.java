@@ -255,6 +255,9 @@ public class FracCalc {
     		for (int i = 1; i < input.length(); i++) {
     			ifNegative += input.charAt(i);
     		}
+    		if (ifNegative.length() == 0) {
+    			return false;
+    		}
     		String[] ssplit = ifNegative.split("/");
         	String[] usplit = ifNegative.split("_");
         	if (ssplit.length == 1 && usplit.length == 1) {
