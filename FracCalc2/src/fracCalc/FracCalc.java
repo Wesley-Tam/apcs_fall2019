@@ -250,39 +250,80 @@ public class FracCalc {
     
     public static boolean isNumber (String input) {		//Error handling
     	boolean ans = true;
-    	String[] ssplit = input.split("/");
-    	String[] usplit = input.split("_");
-    	if (ssplit.length == 1 && usplit.length == 1) {
-    		for (int i = 0; i < input.length(); i++) {
-    			if (Character.isDigit(input.charAt(i)) != true) {
-    				ans = false;
-    			}
+    	if (input.charAt(0) == '-') {
+    		String ifNegative = "";
+    		for (int i = 1; i < input.length(); i++) {
+    			ifNegative += input.charAt(i);
     		}
-    	} else if (ssplit.length > 2 || usplit.length > 2) {
-    		ans = false;
-    	} else if (ssplit.length == 0 || usplit.length == 0) {
-    		ans = false;
-    	} else {
-    		String[] ussplit2 = ssplit[1].split("_");
-    		if (ussplit2.length > 1) {
-    			ans = false;
-    		} else {
-    			String[] ussplit1 = ssplit[0].split("_");
-    			for (int i = 0; i < ussplit1.length; i++) {
-    				for (int j = 0; j < ussplit1[i].length(); j++) {
-    					if (Character.isDigit(ussplit1[i].charAt(j)) == true) {
-    						for (int k = 0; k < ssplit[1].length(); k++) {
-    							if (Character.isDigit(ssplit[1].charAt(k)) != true) {
-    								ans = false;
-    							}
-    						}
-    					} else {
-    						ans = false;
-    					}
-    				}
-    			}
-    		}
-    	}
-    	return ans;
+    		String[] ssplit = ifNegative.split("/");
+        	String[] usplit = ifNegative.split("_");
+        	if (ssplit.length == 1 && usplit.length == 1) {
+        		for (int i = 0; i < ifNegative.length(); i++) {
+        			if (Character.isDigit(ifNegative.charAt(i)) != true) {
+        				ans = false;
+        			}
+        		}
+        	} else if (ssplit.length > 2 || usplit.length > 2) {
+        		ans = false;
+        	} else if (ssplit.length == 0 || usplit.length == 0) {
+        		ans = false;
+        	} else {
+        		String[] ussplit2 = ssplit[1].split("_");
+        		if (ussplit2.length > 1) {
+        			ans = false;
+        		} else {
+        			String[] ussplit1 = ssplit[0].split("_");
+        			for (int i = 0; i < ussplit1.length; i++) {
+        				for (int j = 0; j < ussplit1[i].length(); j++) {
+        					if (Character.isDigit(ussplit1[i].charAt(j)) == true) {
+        						for (int k = 0; k < ssplit[1].length(); k++) {
+        							if (Character.isDigit(ssplit[1].charAt(k)) != true) {
+        								ans = false;
+        							}
+        						}
+        					} else {
+        						ans = false;
+        					}
+        				}
+        			}
+        		}
+        	}
+        	return ans;
+        } else {		//if not negative
+        	String[] ssplit = input.split("/");
+        	String[] usplit = input.split("_");
+        	if (ssplit.length == 1 && usplit.length == 1) {
+        		for (int i = 0; i < input.length(); i++) {
+        			if (Character.isDigit(input.charAt(i)) != true) {
+        				ans = false;
+        			}
+        		}
+        	} else if (ssplit.length > 2 || usplit.length > 2) {
+        		ans = false;
+        	} else if (ssplit.length == 0 || usplit.length == 0) {
+        		ans = false;
+        	} else {
+        		String[] ussplit2 = ssplit[1].split("_");
+        		if (ussplit2.length > 1) {
+        			ans = false;
+        		} else {
+        			String[] ussplit1 = ssplit[0].split("_");
+        			for (int i = 0; i < ussplit1.length; i++) {
+        				for (int j = 0; j < ussplit1[i].length(); j++) {
+        					if (Character.isDigit(ussplit1[i].charAt(j)) == true) {
+        						for (int k = 0; k < ssplit[1].length(); k++) {
+        							if (Character.isDigit(ssplit[1].charAt(k)) != true) {
+        								ans = false;
+        							}
+        						}
+        					} else {
+        						ans = false;
+        					}
+        				}
+        			}
+        		}
+        	}
+        	return ans;
+        }
     }
 }
