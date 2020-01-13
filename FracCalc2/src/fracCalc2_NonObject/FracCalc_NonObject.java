@@ -2,10 +2,10 @@
 //October 29, 2019
 //This code is a calculator for fractions and returns fractions in mixed number form
 
-package fracCalc;
+package fracCalc2_NonObject;
 import java.util.*; 
 
-public class FracCalc {
+public class FracCalc_NonObject {
     public static void main(String[] args) {
     	Scanner userInput = new Scanner(System.in);
     	boolean done = false;
