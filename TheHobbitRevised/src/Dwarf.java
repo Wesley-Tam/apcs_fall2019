@@ -1,5 +1,6 @@
 //Wesley Tam
 //February 6, 2020
+//This is the Dwarf object
 
 public class Dwarf extends Traveler {
 	//Dwarves will need a constructor, but there's nothing new for them beyond
@@ -9,9 +10,6 @@ public class Dwarf extends Traveler {
 	
 	//Complete the constructor
 	public Dwarf(String name) {
-		
+		super(name);
 	}
-
-	
-
 }

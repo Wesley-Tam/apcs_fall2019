@@ -1,12 +1,12 @@
 //Wesley Tam
 //February 6, 2020
+//Client Code: Increases and prints out travel distance of parties
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ThereAndBackAgain {
-
 	public static void main(String[] args) {
-		
 		Hobbit frodo = new Hobbit("Frodo");
 		Hobbit sam = new Hobbit("Sam");
 		Dwarf gimli = new Dwarf("Gimli");
@@ -21,14 +21,55 @@ public class ThereAndBackAgain {
 		//                   Sam has traveled 50 miles.
 		//                   Gimli has traveled 50 miles.
 		
+		Traveler[] party1 = new Traveler[3];
+		party1[0] = frodo;
+		party1[1] = sam;
+		party1[2] = gimli;
+		for (int i = 0; i < party1.length; i++) {
+			party1[i].travel(50);
+			System.out.println(party1[i].getName() + " has traveled " + party1[i].getDistanceTraveled() + " miles.");
+		}
 		
-		
-		
-		
-		
-		System.out.println();
+		System.out.println("\n\n\nPART 2: \n");
 
+		String[] dwarfNames = {"Fili", "Kili", "Dori", "Ori", "Nori", "Balin", "Dwalin",
+		"Oin", "Gloin", "Bifur", "Bofur", "Bombur", "Thorin"};
+
+		// Make a new ArrayList to hold a 2nd party of Travelers called party2:
+		// Make a new Hobbit called "Bilbo" and add him to party2
+		// Make a new Wizard called "Gandalf" and add him to party2.
+		
+		ArrayList<Traveler> party2 = new ArrayList<Traveler>();
+		Hobbit Bilbo = new Hobbit("Bilbo");
+		party2.add(Bilbo);
+		Wizard Gandalf = new Wizard("Gandalf", "White");
+		party2.add(Gandalf);
+		createParty(dwarfNames, party2);
+		allTravel(party2, 100);
+		for (Traveler x : party2) {
+			System.out.println(x.getName() + " has traveled " + x.getDistanceTraveled() + " miles.");
+		}
+
+		//write createParty
+		// Call the createParty method and pass it party2 and the dwarfNames array.
+		// create party should add all the new dwarves to party2,
+
+		//Write allTravel
+		// Finally, call the allTravel method passing it party2 and 100 (representing
+		// the 100 miles that party2 has traveled together.
+
+		//Make sure your code prints out the name and distances party2 has traveled.
 	}
-
 	
+	public static void createParty(String[] names, ArrayList<Traveler> party) {
+		for (int i = 0; i < names.length; i++) {
+			party.add(new Dwarf(names[i]));
+		}
+	}
+	
+	public static void allTravel(ArrayList<Traveler> party, int miles) {
+		for (int i = 0; i < party.size(); i++) {
+			party.get(i).travel(miles);
+		}
+	}
 }
